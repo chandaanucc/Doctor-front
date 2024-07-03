@@ -1,4 +1,3 @@
-
 import 'package:ai_doc_app/modules/signupscreen/signup.dart';
 import 'package:flutter/material.dart';
 

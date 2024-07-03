@@ -1,9 +1,9 @@
-import 'package:ai_doc_app/modules/welcomescreen/imagecontainers/imagecontainer.dart';
+import 'package:ai_doc_app/modules/welcomescreen/imagecontainers/imagecontainertwo.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+class WelcomeScreenTwo extends StatelessWidget {
+  const WelcomeScreenTwo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class WelcomeScreen extends StatelessWidget {
               color: AppColors.primaryColor,
             ),
           ),
-          const ImagesContainerOne(),
+          const ImagesContainerTwo(),
           const Center(
             child: SingleChildScrollView(
               child: Column(

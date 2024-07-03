@@ -1,4 +1,5 @@
 import 'package:ai_doc_app/modules/signupscreen/signup.dart';
+import 'package:ai_doc_app/modules/welcomescreen/welcome.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
@@ -88,7 +89,7 @@ class Disclaimer extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const SignUpScreen(), 
+                                      const WelcomeScreen(), 
                                 ),
                               );
                             },
