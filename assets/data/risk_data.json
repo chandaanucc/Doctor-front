@@ -1,0 +1,62 @@
+{
+  "risk1": {
+    "title": "Risk 1",
+    "details": "9072",
+    "color": "#E1395F"
+   
+  },
+  "risk2": {
+
+    "image": "assets/images/risk2.png",
+    "title": "Risk 2",
+    "details": "5.7 KM"
+    
+    
+  },
+  "long_container": {
+    "title": "ℍ𝕖𝕒𝕣𝕥 ℝ𝕒𝕥𝕖",
+    "details": "𝟝𝟟 𝕂𝕞",
+    "logo": "assets/images/pulse.png",
+    "image": "assets/images/heart.png"
+   
+  },
+
+  "container1": {
+    "title": "Calories",
+    "details": "1234 kcal",
+    "image": "assets/images/calory.png",
+    "color": "#E1395F"
+  },
+"container2": {
+    "title": "",
+    "details": "9:43",
+    "logo": "assets/images/lines.png",
+    "image": 
+  
+      "assets/images/sleep.png"
+    
+  },
+
+  "container3": {
+    "title": "𝕐𝕠𝕘𝕒",
+    "details": "𝟝:𝟛𝟘 hour",
+    "image": "assets/images/yoga.png",
+    "color": ""
+  },
+
+  "container4": {
+    "title": "Fitness",
+    "details": "9:43 h",
+    "image": "assets/images/fitness.png",
+    "color": ""
+  }
+
+  }
+   
+
+
+ 
+  
+
+  
+
