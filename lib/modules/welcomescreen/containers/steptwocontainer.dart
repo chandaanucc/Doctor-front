@@ -1,6 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
-
-import 'package:ai_doc_app/modules/signupscreen/signup.dart';
+import 'package:ai_doc_app/modules/welcomescreen/welcomethree.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
@@ -117,7 +116,7 @@ class _StepTwoContainerState extends State<StepTwoContainer> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const SignUpScreen())); 
+                                      const WelcomeScreenThree())); 
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white, // Button color
