@@ -1,5 +1,5 @@
 {
-  "risk1": {
+  "risk": {
     "title": "Risk 1",
     "details": "9072",
     "color": "#E1395F"
@@ -12,12 +12,13 @@
     "details": "5.7 KM"
     
     
+    
   },
   "long_container": {
     "title": "ℍ𝕖𝕒𝕣𝕥 ℝ𝕒𝕥𝕖",
-    "details": "𝟝𝟟 𝕂𝕞",
+    "details": "𝟝.𝟟 𝕂𝕞",
     "logo": "assets/images/pulse.png",
-    "image": "assets/images/heart.png"
+    "picture": "assets/images/heart.png"
    
   },
 
@@ -41,14 +42,16 @@
     "title": "𝕐𝕠𝕘𝕒",
     "details": "𝟝:𝟛𝟘 hour",
     "image": "assets/images/yoga.png",
-    "color": ""
+    "color": "AppColors.primary",
+    "textColor": "#FF0000" 
   },
 
   "container4": {
     "title": "Fitness",
     "details": "9:43 h",
-    "image": "assets/images/fitness.png",
-    "color": ""
+    "image": "assets/images/fitness.png"
+    
+   
   }
 
   }
