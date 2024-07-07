@@ -1,9 +1,9 @@
-
 import 'dart:convert';
-
-import 'package:ai_doc_app/modules/BottomTabs/chatbotpopupscreen.dart';
+// import 'package:doctor_ui_screens/modules/BottomTabs/chatbotpopupscreen.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
  // Import the ChatbotOptionsScreen.dart
 
 class Home extends StatefulWidget {
@@ -32,14 +32,7 @@ class _HomeState extends State<Home> {
     }
   }
 
-  void _showChatbotOptions(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return ChatWidget (); // Show ChatbotOptionsScreen as a bottom sheet
-      },
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -428,7 +421,7 @@ class _HomeState extends State<Home> {
       floatingActionButton: GestureDetector(
   onTap: () {
       _showPopupCard(context);
-      ChatWidget();
+      
   },
 
 
@@ -607,32 +600,53 @@ class _HomeState extends State<Home> {
 void _showPopupCard(BuildContext context) {
   showDialog(
     context: context,
-    
     builder: (BuildContext context) {
       return Dialog(
+        insetPadding: EdgeInsets.symmetric(horizontal: 0), // Ensure dialog takes full width
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25.0),
+          borderRadius: BorderRadius.circular(20.0),
         ),
-        child: Container(
-          width:4000,
+        
           
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
           
-          height: MediaQuery.of(context).size.height * 0.69,
-          // width: MediaQuery.of(context).size.width * 100,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              _topChat(context),
-              SizedBox(height: 10), // Spacer between top chat and body chat
-              _bodyChat(),
-            ],
+          child: Container(
+            
+            width: MediaQuery.of(context).size.width * 0.92, // Set width to full screen width
+            height: MediaQuery.of(context).size.height * 0.69, // Set desired height
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+           
+            child: Column(
+              
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+
+                 ClipPath(
+                  clipper: WaveClipperTwo(),
+                  child: Container(
+
+                    height: 170,
+                    width: 570,
+                    padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+                    color: AppColors.primaryColor,
+
+                  ),
+                 ),
+                 
+                
+                _topChat(context),
+                // Spacer between top chat and body chat
+                _bodyChat(),
+              ],
+              
+            ),
           ),
-        ),
-      );
-    },
-  );
-}
+        );
+        
+    });
+}   
+    
+  
+  
 
 Widget _topChat(BuildContext context) {
   return Container(
@@ -729,8 +743,8 @@ Widget _itemChat({required int chat, required String avatar, message, time}) {
             decoration: BoxDecoration(
               color: chat == 0 ? Colors.blue : Colors.black12,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25),
-                topRight: Radius.circular(25),
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
                 bottomLeft: chat == 1 ? Radius.circular(25) : Radius.circular(0),
                 bottomRight: chat == 0 ? Radius.circular(25) : Radius.circular(0),
               ),
