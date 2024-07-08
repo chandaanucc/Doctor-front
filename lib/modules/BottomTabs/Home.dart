@@ -1,7 +1,7 @@
 import 'dart:convert';
 // import 'package:doctor_ui_screens/modules/BottomTabs/chatbotpopupscreen.dart';
-import 'package:ai_doc_app/theme/app_color.dart';
 
+import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
  // Import the ChatbotOptionsScreen.dart
@@ -597,134 +597,508 @@ class _HomeState extends State<Home> {
 //   );
 // }
 
+// void _showPopupCard(BuildContext context) {
+//     showDialog(
+//       context: context,
+//       builder: (BuildContext context) {
+//         return Dialog(
+//           insetPadding: EdgeInsets.symmetric(horizontal: 0), // Ensure dialog takes full width
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(20.0),
+//           ),
+  
+
+  // child: ClipRRect(
+  //           borderRadius: BorderRadius.circular(20.0),
+  //           child: Container(
+  //             width: MediaQuery.of(context).size.width * 0.92, // Set width to full screen width
+  //             height: MediaQuery.of(context).size.height * 0.69, // Set desired height
+  //             child: Column(
+  //               mainAxisSize: MainAxisSize.min,
+  //               crossAxisAlignment: CrossAxisAlignment.stretch,
+  //               children: <Widget>[
+  //                 ClipPath(
+  //                   clipper: WaveClipperTwo(),
+  //                   child: Container(
+  //                     height: 170,
+  //                     width: double.infinity,
+  //                     color:AppColors.primaryColor, // Replace with AppColors.primaryColor
+  //                     padding: EdgeInsets.only(bottom: 160, left: 20, right: 120),
+  //                     child: Stack(
+  //                       alignment: Alignment.center,
+  //                       children: <Widget>[
+  //                         Image.asset(
+  //                           'assets/images/baymax.png', // Replace with your image path
+  //                           height: 700,
+  //                           width: 600, // Adjust height as needed
+  //                         ),
+  //                         Positioned(
+  //                           left: 20,
+  //                           top: -40,
+  //                           child: Text(
+  //                             'Top Chat',
+  //                             style: TextStyle(color: Colors.white, fontSize: 18),
+  //                           ),
+  //                         ),
+  //                       ],
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 SizedBox(height: 10), // Spacer between top chat and body chat
+  //                 _bodyChat(), // Assuming _bodyChat returns a widget
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
+
+
+
+//  void _showPopupCard(BuildContext context) {
+//   showDialog(
+//     context: context,
+//     builder: (BuildContext context) {
+//       return Dialog(
+//         insetPadding: EdgeInsets.symmetric(horizontal: 0),
+//         shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(20.0),
+//         ),
+//         child: ClipRRect(
+//           borderRadius: BorderRadius.circular(20.0),
+//           child: Container(
+//             width: MediaQuery.of(context).size.width * 0.92,
+//             height: MediaQuery.of(context).size.height * 0.69,
+//             child: Column(
+//               mainAxisSize: MainAxisSize.min,
+//               crossAxisAlignment: CrossAxisAlignment.stretch,
+//               children: <Widget>[
+//                 ClipPath(
+//                   clipper: WaveClipperTwo(),
+//                   child: Container(
+//                     height: 150, // Adjusted height to reduce space
+//                     width: double.infinity,
+//                     color: AppColors.primaryColor,
+//                     padding: EdgeInsets.only(bottom: 40, left: 20, right: 120),
+//                     child: Stack(
+//                       children: <Widget>[
+//                         Transform.scale(
+//                           scale: 1.5,
+//                           child: Image.asset(
+//                             'assets/images/baymax2.png',
+//                             height: 600,
+//                           ),
+//                         ),
+//                         // Positioned(
+//                         //   right: -50,
+//                         //   top: -50,
+//                         //   left: -50,
+//                         //   child: Text(
+//                         //     'Top Chat',
+//                         //     style: TextStyle(color: Colors.white, fontSize: 18),
+//                         //   ),
+//                         // ),
+//                       ],
+                     
+//                     ),
+                    
+//                   ),
+                  
+//                 ),
+//                 //  _topChat(context),
+//                  _bodyChat()
+                
+//                 // _bodyChat(), // Assuming _bodyChat returns a widget
+//               ],
+               
+//             ),
+//           ),
+//         ),
+//       );
+//     },
+//   );
+// }
+
+
 void _showPopupCard(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return Dialog(
-        insetPadding: EdgeInsets.symmetric(horizontal: 0), // Ensure dialog takes full width
+        insetPadding: EdgeInsets.symmetric(horizontal: 0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        
-          
-          
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
           child: Container(
-            
-            width: MediaQuery.of(context).size.width * 0.92, // Set width to full screen width
-            height: MediaQuery.of(context).size.height * 0.69, // Set desired height
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-           
+            width: MediaQuery.of(context).size.width * 0.92,
+            height: MediaQuery.of(context).size.height * 0.69,
             child: Column(
-              
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-
-                 ClipPath(
+                ClipPath(
                   clipper: WaveClipperTwo(),
                   child: Container(
-
-                    height: 170,
-                    width: 570,
-                    padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+                    height: 150, // Adjusted height to reduce space
+                    width: double.infinity,
                     color: AppColors.primaryColor,
+                    padding: EdgeInsets.only(bottom: 20, left: 20, right: 120),
+                    
+                    child: Stack(
+                      
+                      children: <Widget>[
+                        Align(
+                          child: Transform.scale(
+                            scale: 1.5,
+                            child: Container(
+                              
+                              height: 300,
+                              alignment: Alignment.bottomCenter,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: AppColors.primaryColor
+                              ),
+                              
 
+                             
+                              
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 90),
+                                child: SizedBox(
+                                  child: Image.asset(
+                                    'assets/images/baymax2.png',
+                                    height: 1000,
+                                  ),
+                                ),
+                              ),
+                              
+                            ),
+                            
+                          ),
+
+                        ),
+                        Column(
+                          children: [
+
+
+
+
+                            
+                            Padding(
+                              padding: const EdgeInsets.only(left: 80, top: 20,),
+                              child: Text("Iam Baymax", style: TextStyle(fontWeight: FontWeight.normal, color: AppColors.textColor
+                              ),
+                              ),
+                            ),
+
+
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.end,
+                            //   crossAxisAlignment: CrossAxisAlignment.center,
+                            //   children: [
+                            //     Padding(
+                            //   padding: EdgeInsets.only(bottom: 40, right: 120),
+                            //       child: Icon(Icons.more_vert),
+                            //     ),
+                            //   ],
+                            // ),
+                            SizedBox(height: 10,),
+
+
+
+                            
+                             Padding(
+      padding: const EdgeInsets.only(left: 120), // Adjust padding as needed
+      child: Text(
+        "Your healthcare companion",
+        style: TextStyle(
+          fontWeight: FontWeight.normal,
+          color: AppColors.textColor,
+        ),
+      ),
+    ),
+    
+    
+
+    
+   
+  
+                          ],
+                          
+                          
+                        ),
+                        
+                        
+                        
+                        Positioned(
+                          right: -50,
+                          top: -50,
+                          left: -50,
+                          child: Text(
+                            'Top Chat',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                 ),
-                 
-                
-                _topChat(context),
-                // Spacer between top chat and body chat
-                _bodyChat(),
-              ],
-              
-            ),
+                ),
+
+
+
+                Padding(
+                  padding: const EdgeInsets.only( top: 40 , right: 40, left: 20),
+                  child: Container(
+                    height: 60,
+                    width: 10,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white
+
+
+                      
+
+                      
+                  
+                    ),
+
+                    child: Center(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: Text(
+          'Lorem epsum dollar sit amet consect?', // Replace with your desired text
+          style: TextStyle(
+            color: Colors.black, // Adjust text color as needed
+            fontSize: 16, // Adjust font size as needed
           ),
-        );
-        
-    });
-}   
+        ),
+      ),
+    ),
+  ),
+),
+                   
+                    
+                    
+                  
+                  
+
+
+                
+                
+                
+
+
+                
+                Padding(
+                  padding: const EdgeInsets.only( top: 40 , right: 20, left: 50),
+                  child: Container(
+                    height: 60,
+                    width: 10,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.grey
+
+                      
+                  
+                    ),
+
+                    child: Center(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: Text(
+          'Lorem epsum dollar sit amet consect?', // Replace with your desired text
+          style: TextStyle(
+            color: Colors.black, // Adjust text color as needed
+            fontSize: 16, // Adjust font size as needed
+          ),
+        ),
+      ),
+    ),
+  ),
+),
+                    
+                   
+                    
+                    
+                
+
+
+               
+
+
+
+                 Padding(
+                  padding: const EdgeInsets.only( top: 40 , right: 40, left: 20),
+                  child: Container(
+                    height: 60,
+                    width: 10,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white
+
+                      
+                  
+                    ),
+                    child: Center(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: Text(
+          'Lorem epsum dollar sit amet consect', // Replace with your desired text
+          style: TextStyle(
+            color: Colors.black, // Adjust text color as needed
+            fontSize: 16, // Adjust font size as needed
+          ),
+        ),
+      ),
+    ),
+  ),
+),
+                   
+                    
+                    
+                  
+
+
+                
+
+               SizedBox(height: 20,),
+               Divider(
+  height: 20.0,
+  thickness: 3.0,
+  color: Colors.white,
+  indent: 25.0,
+  endIndent: 25.0,
+),
+
+
+Container(
+  child: Padding(
+    padding: const EdgeInsets.only(left: 40),
+    child: 
+    Text("Enter your message", 
+    style: TextStyle(color: Colors.grey),
+    ),
     
   
   
+  ),
+),
+Padding(
+  padding: const EdgeInsets.only(right: 30),
+  child: Align(
+    alignment: Alignment.centerRight,
+    child: Container(
+      height: 60, // Adjust size as needed
+      width: 60, // Adjust size as needed
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: AppColors.primaryColor, // Adjust color as needed
+      ),
+      child: Icon(Icons.send, size: 30, color: Colors.white), // Adjust icon size and color as needed
+    ),
+  ),
+)
 
-Widget _topChat(BuildContext context) {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10), // Adjust vertical padding
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          '', // Adjust chat title text here
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+
+                // SizedBox(height: 0), // Adjusted spacing between ClipPath and _bodyChat
+                // _bodyChat(), // Assuming _bodyChat returns a widget
+              ],
+            ),
           ),
         ),
-        Row(
-          children: [
-            // IconButton(
-            //   icon: Icon(Icons.call),
-            //   onPressed: () {},
-            //   // Add your call functionality here
-            // ),
-            // // SizedBox(width: 20),
-            // // IconButton(
-            // //   icon: Icon(Icons.videocam),
-            // //   onPressed: () {},
-            // //   // Add your video call functionality here
-            // ),
-          ],
-        ),
-      ],
-    ),
+      );
+    },
   );
 }
+
+  
+
+// Widget _topChat(BuildContext context) {
+//   return Container(
+//     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10), // Adjust vertical padding
+//     child: Row(
+//       mainAxisAlignment: MainAxisAlignment.start,
+//       children: [
+//         Text(
+//           'chat title', // Adjust chat title text here
+//           style: TextStyle(
+//             fontSize: 20,
+//             fontWeight: FontWeight.bold,
+//             color: Colors.black,
+//           ),
+//         ),
+//         Row(
+//           children: [
+//             IconButton(
+//               icon: Icon(Icons.call),
+//               onPressed: () {},
+//               // Add your call functionality here
+//             ),
+//             SizedBox(width: 20),
+//             IconButton(
+//               icon: Icon(Icons.videocam),
+//               onPressed: () {},
+//               )// Add your video call functionality here
+//           ],
+//         ),
+//       ],
+      
+//     ));
+  
+// }
 
 Widget _bodyChat() {
   return Expanded(
     child: Padding(
       padding: const EdgeInsets.only(top: 90),
-      child: ListView(
+      child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        children: [
-          _itemChat(
-            avatar: 'assets/image/5.jpg',
-            chat: 0,
-            message: 'Lorem Ipsum is simply dummy text.',
-            time: '18:00',
-          ),
-          _itemChat(
-            chat: 1,
-            message: 'Lorem Ipsum is simply dummy text',
-            time: '18:00', avatar: '',
-            // avatar: '', // Remove avatar if not needed
-          ),
-          _itemChat(
-            avatar: 'assets/image/5.jpg',
-            chat: 0,
-            message: 'Lorem Ipsum is simply dummy text',
-            time: '18:00',
-          ),
-          _itemChat(
-            chat: 1,
-            message: 'Lorem Ipsum is simply ',
-            time: '18:00', avatar: '',
-            // avatar: '', // Remove avatar if not needed
-          ),
-          _itemChat(
-            avatar: 'assets/image/5.jpg',
-            chat: 0,
-            message: 'Lorem Ipsum is simply dummy text',
-            time: '18:00',
-          ),
-          
-        ],
+        child: Column(
+          children: [
+            _itemChat(
+              avatar: 'assets/image/5.jpg',
+              chat: 0,
+              message: 'Lorem Ipsum is simply dummy text.',
+              time: '18:00',
+            ),
+            _itemChat(
+              chat: 1,
+              message: 'Lorem Ipsum is simply dummy text',
+              time: '18:00',
+              avatar: '',
+              // avatar: '', // Remove avatar if not needed
+            ),
+            _itemChat(
+              avatar: 'assets/image/5.jpg',
+              chat: 0,
+              message: 'Lorem Ipsum is simply dummy text',
+              time: '18:00',
+            ),
+            _itemChat(
+              chat: 1,
+              message: 'Lorem Ipsum is simply ',
+              time: '18:00',
+              avatar: '',
+              // avatar: '', // Remove avatar if not needed
+            ),
+            _itemChat(
+              avatar: 'assets/image/5.jpg',
+              chat: 0,
+              message: 'Lorem Ipsum is simply dummy text',
+              time: '18:00',
+            ),
+          ],
+        ),
       ),
     ),
   );
 }
+
 
 Widget _itemChat({required int chat, required String avatar, message, time}) {
   return Container(
