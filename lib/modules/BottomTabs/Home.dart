@@ -50,6 +50,16 @@ class _HomeState extends State<Home> {
                 Scaffold.of(context).openDrawer();
               },
             ),
+
+
+            IconButton(
+
+              icon: Icon(Icons.arrow_back),
+              onPressed:  (){
+
+                  Navigator.of(context).pop();
+
+              },),
             SizedBox(width: 8),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -73,6 +83,9 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
+
+
+
       body: Container(
         color: Colors.white,
         child: riskData == null
@@ -396,6 +409,9 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
+
+
+                
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
@@ -721,7 +737,6 @@ class _HomeState extends State<Home> {
 //   );
 // }
 
-
 void _showPopupCard(BuildContext context) {
   showDialog(
     context: context,
@@ -746,28 +761,21 @@ void _showPopupCard(BuildContext context) {
                     height: 150, // Adjusted height to reduce space
                     width: double.infinity,
                     color: AppColors.primaryColor,
-                    padding: EdgeInsets.only(bottom: 20, left: 20, right: 120),
-                    
+                    padding: EdgeInsets.only(bottom: 20, left: 20, right: 20),
                     child: Stack(
-                      
                       children: <Widget>[
                         Align(
                           child: Transform.scale(
                             scale: 1.5,
                             child: Container(
-                              
                               height: 300,
                               alignment: Alignment.bottomCenter,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 color: AppColors.primaryColor
                               ),
-                              
-
-                             
-                              
                               child: Padding(
-                                padding: const EdgeInsets.only(right: 90),
+                                padding: const EdgeInsets.only(right: 160),
                                 child: SizedBox(
                                   child: Image.asset(
                                     'assets/images/baymax2.png',
@@ -775,65 +783,96 @@ void _showPopupCard(BuildContext context) {
                                   ),
                                 ),
                               ),
-                              
                             ),
-                            
                           ),
-
                         ),
                         Column(
                           children: [
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Center(
+                                    child: Text(
+                                      "                            Iam Baymax",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        color: AppColors.textColor,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 50),
+                               Padding(
+                                 padding: const EdgeInsets.only(top: 20),
+                                 child: Icon(Icons.more_vert, color: AppColors.textColor),
+                               ),
+
+                             
+                                // Padding(
+                                //   padding: EdgeInsets.only(top: 20),
+                                //   child: IconButton(
+                                //     icon: Icon(Icons.arrow_drop_down_circle_sharp, color: AppColors.textColor),
+                                //     onPressed: () {
+                                  
+                                  
+                                      
+                                  
+                                  
+                                //       // Add menu button action here
+                                //     },
+                                //   ),
+                                // ),
 
 
 
+                                Padding(
+  padding: EdgeInsets.only(top: 20),
+  child: GestureDetector(
+    onTap: () {
 
-                            
+
+       Navigator.of(context).pop();
+      // Add menu button action here
+    },
+    child: Image.asset(
+      'assets/images/keyboard.png', // Replace with your image asset path
+      width: 54, // Adjust width as needed
+      height: 54, // Adjust height as needed
+      color: AppColors.textColor, // Optional: You can apply color to the image
+    ),
+  ),
+)
+
+                              ],
+                            ),
+                            // SizedBox(height: 10),
                             Padding(
-                              padding: const EdgeInsets.only(left: 80, top: 20,),
-                              child: Text("Iam Baymax", style: TextStyle(fontWeight: FontWeight.normal, color: AppColors.textColor
-                              ),
+                              padding: const EdgeInsets.only(left: 60,  right: 70,), // Adjust padding as needed
+                              child: Text(
+                                "Your healthcare",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal,
+                                  color: AppColors.textColor,
+                                ),
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
 
-
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.end,
-                            //   crossAxisAlignment: CrossAxisAlignment.center,
-                            //   children: [
-                            //     Padding(
-                            //   padding: EdgeInsets.only(bottom: 40, right: 120),
-                            //       child: Icon(Icons.more_vert),
-                            //     ),
-                            //   ],
-                            // ),
-                            SizedBox(height: 10,),
-
-
-
-                            
-                             Padding(
-      padding: const EdgeInsets.only(left: 120), // Adjust padding as needed
-      child: Text(
-        "Your healthcare companion",
-        style: TextStyle(
-          fontWeight: FontWeight.normal,
-          color: AppColors.textColor,
-        ),
-      ),
-    ),
-    
-    
-
-    
-   
-  
+                            Padding(
+                              padding: const EdgeInsets.only(left: 60, right: 120), // Adjust padding as needed
+                              child: Text(
+                                "Companion",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  color: AppColors.textColor,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
                           ],
-                          
-                          
                         ),
-                        
-                        
-                        
                         Positioned(
                           right: -50,
                           top: -50,
@@ -841,13 +880,13 @@ void _showPopupCard(BuildContext context) {
                           child: Text(
                             'Top Chat',
                             style: TextStyle(color: Colors.white, fontSize: 18),
-
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
+                
 
 
 
