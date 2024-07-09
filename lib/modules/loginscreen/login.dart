@@ -176,7 +176,7 @@ class LoginScreen extends StatelessWidget {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const SignUpScreen(), // Replace LoginScreen with your desired widget
+                                    builder: (context) => SignUpScreen(), // Replace LoginScreen with your desired widget
                                   ),
                                 );
                               },

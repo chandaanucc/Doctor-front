@@ -1,3 +1,4 @@
+import 'package:ai_doc_app/modules/loginscreen/login.dart';
 import 'package:ai_doc_app/modules/signupscreen/signup.dart';
 import 'package:ai_doc_app/modules/welcomescreen/welcomeone.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
@@ -18,7 +19,7 @@ class Disclaimer extends StatelessWidget {
            Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const SignUpScreen(),
+                                    builder: (context) => LoginScreen(),
                                   ),
                                 );
           },
