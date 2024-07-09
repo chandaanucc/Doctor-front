@@ -1,9 +1,9 @@
 // ignore_for_file: library_private_types_in_public_api
 
-
 import 'package:ai_doc_app/modules/welcomescreen/welcomefourth.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class StepThreeContainer extends StatefulWidget {
   const StepThreeContainer({super.key});
@@ -17,7 +17,7 @@ class _StepThreeContainerState extends State<StepThreeContainer> {
   Widget build(BuildContext context) {
     return Container(
       width: 290,
-      height: 485,
+      height: 490,
       decoration: BoxDecoration(
         color: AppColors.accentColor,
         borderRadius: BorderRadius.circular(20),
@@ -32,78 +32,97 @@ class _StepThreeContainerState extends State<StepThreeContainer> {
       ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                'Do you have any existing\n conditions that I should be aware?',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, color: Colors.white),
-              ),
-              const SizedBox(height: 20),
-              GridView.count(
-                crossAxisCount: 3,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: <Widget>[
-                  _buildConditionCard('assets/icons/heart.png', 'Heart related'),
-                  _buildConditionCard('assets/icons/glucose.png', 'Glucose'),
-                  _buildConditionCard('assets/icons/fire.png', 'Other'),
-                  _buildConditionCard('assets/icons/gastro.png', 'Gastroenterologist'),
-                  _buildConditionCard('assets/icons/urologist.png', 'Urologist'),
-                  _buildConditionCard('assets/icons/neurologist.png', 'Neurologist'),
-                ],
-              ),
-              const SizedBox(height: 20),
-              const TextField(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              'Step 3 / 5',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, color: Colors.white),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Do you have any existing\n conditions that I should be aware?',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 15, color: Colors.white),
+            ),
+            const SizedBox(height: 20),
+            GridView.count(
+              crossAxisCount: 3,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                _buildConditionCard('assets/icons/heart.png', 'Heart'),
+                _buildConditionCard('assets/icons/glucose.png', 'Glucose'),
+                _buildConditionCard('assets/icons/fire.png', 'Fire'),
+                _buildConditionCard('assets/icons/gastro.png', 'Gastro'),
+                _buildConditionCard('assets/icons/urologist.png', 'Urologist'),
+                _buildConditionCard('assets/icons/neurologist.png', 'Neurologist'),
+              ],
+            ),
+            const SizedBox(height: 10),
+            const Padding(
+              padding:EdgeInsets.only(left:14),
+              child: Align(alignment:Alignment.centerLeft,child: Text('Others', style: TextStyle(fontSize: 15, color:Colors.white ),))),
+            const SizedBox(height:5),
+            const SizedBox(
+              width:250,
+              height:35,
+              child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Quick Search',
                   fillColor: Colors.white,
                   filled: true,
-                  prefixIcon: Icon(Icons.search),
+                  suffixIcon: Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   ),
+                  contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 ),
               ),
-              const SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      // Handle Later action
-                    },
-                    child: const Text(
-                      'Examine Later',
-                      style: TextStyle(color: Colors.white),
-                    ),
+            ),
+            const SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle Later action
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryColor
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const WelcomeScreenFour())); 
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white, // Button color
-                    ),
-                    child: const Row(
-                      children: [
-                        Text('Continue', style: TextStyle(color: AppColors.accentColor)),
-                        Icon(Icons.arrow_right, color: AppColors.accentColor),
-                      ],
-                    ),
+                  child: const Text(
+                    'Examine Later',
+                    style: TextStyle(color: Colors.white),
+                  )
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const WelcomeScreenFour(),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.accentColor,
+                    side: const BorderSide(color: Colors.white, width: 2.0),
                   ),
-                ],
-              ),
-            ],
-          ),
+                  child: const Row(
+                    children: [
+                      Text('Continue', style: TextStyle(color: Colors.white)),
+                      Icon(Icons.arrow_right, color: Colors.white),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -113,14 +132,17 @@ class _StepThreeContainerState extends State<StepThreeContainer> {
     return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0)),
-      child: Center(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      margin: const EdgeInsets.all(10),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0), // Minimal padding
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
               iconPath,
-              width: 40,
+              width: 40, // Reduced icon size
               height: 40,
             ),
             const SizedBox(height: 5),
@@ -128,7 +150,7 @@ class _StepThreeContainerState extends State<StepThreeContainer> {
               title,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 10, // Reduced font size
                 color: AppColors.accentColor,
               ),
             ),

@@ -9,6 +9,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Positioned.fill(
@@ -33,7 +34,7 @@ class LoginScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Container(
                   width: 290,
-                  height: 485,
+                  height: 500, // Increased height
                   decoration: BoxDecoration(
                     color: AppColors.accentColor,
                     borderRadius: BorderRadius.circular(20),
@@ -63,6 +64,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
+                          style: const TextStyle(color: Colors.white), // Text color white
                           decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.email),
                             prefixIconColor: AppColors.textColor,
@@ -70,17 +72,16 @@ class LoginScreen extends StatelessWidget {
                             labelText: 'Email or Phone',
                             labelStyle: TextStyle(color: AppColors.textColor),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: AppColors.textColor),
+                              borderSide: BorderSide(color: AppColors.textColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: AppColors.textColor),
+                              borderSide: BorderSide(color: AppColors.textColor),
                             ),
                           ),
                         ),
                         const SizedBox(height: 10),
                         TextFormField(
+                          style: const TextStyle(color: Colors.white), // Text color white
                           obscureText: true,
                           decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.lock),
@@ -89,18 +90,16 @@ class LoginScreen extends StatelessWidget {
                             labelText: 'Password',
                             labelStyle: TextStyle(color: Colors.white),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: AppColors.textColor),
+                              borderSide: BorderSide(color: AppColors.textColor),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: AppColors.textColor),
+                              borderSide: BorderSide(color: AppColors.textColor),
                             ),
                           ),
                         ),
                         const SizedBox(height: 30),
                         Container(
-                          height: 60,
+                          height: 50,
                           width: 250,
                           decoration: ShapeDecoration(
                             shape: RoundedRectangleBorder(
@@ -112,20 +111,17 @@ class LoginScreen extends StatelessWidget {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      const Disclaimer(), // Replace LoginScreen with your desired widget
+                                  builder: (context) => const Disclaimer(), // Replace LoginScreen with your desired widget
                                 ),
                               );
                             },
                             style: ButtonStyle(
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  AppColors.primaryColor),
+                              backgroundColor: MaterialStateProperty.all<Color>(AppColors.primaryColor),
                             ),
                             child: const Text(
                               'Log In',
@@ -148,8 +144,7 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              const Text("OR",
-                                  style: TextStyle(color: AppColors.textColor)),
+                              const Text("OR", style: TextStyle(color: AppColors.textColor)),
                               const SizedBox(width: 10),
                               Expanded(
                                 child: Divider(
@@ -160,12 +155,12 @@ class LoginScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        
+                        const SizedBox(height:1),
                         SingleChildScrollView(
                           child: Image.asset(
-                            'assets/images/bio.png',
-                            height: 40,
-                            width: 390,
+                            'assets/images/bio1.png',
+                            height: 56,
+                            width: 200,
                           ),
                         ),
                         const SizedBox(width: 20),
@@ -181,8 +176,7 @@ class LoginScreen extends StatelessWidget {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SignUpScreen(), // Replace LoginScreen with your desired widget
+                                    builder: (context) => const SignUpScreen(), // Replace LoginScreen with your desired widget
                                   ),
                                 );
                               },
@@ -210,38 +204,46 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
-                    Positioned(
-  left: 60,
-  right: 60,
-  bottom: 90,
-  child: SingleChildScrollView(
-    child: Column(
-      children: [
-        const Text(
-          'Do you have a code from Hospital?',
-          style: TextStyle(fontSize: 10, color: Colors.black),
-        ),
-        const SizedBox(height: 10),
-        Container(
-          height: 50,
-          width: 290,
-          decoration: BoxDecoration(
-            color: AppColors.greyColor,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                spreadRadius: 5,
-                blurRadius: 10,
-                offset: const Offset(0, 3),
+          Positioned(
+            left: 60,
+            right: 60,
+            bottom: 90,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Text(
+                    'Do you have a code from Hospital?',
+                    style: TextStyle(fontSize: 10, color: Colors.black),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    height: 50,
+                    width: 290,
+                    decoration: BoxDecoration(
+                      color: AppColors.greyColor,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ],
-    ),
-  ),
-),
         ],
       ),
     );

@@ -1,10 +1,11 @@
-import 'package:ai_doc_app/modules/welcomescreen/welcometwo.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
-import 'containers/stepthreecontainer.dart';
 
-class WelcomeScreenThree extends StatelessWidget {
-  const WelcomeScreenThree({super.key});
+import '../disclaimer/disclaimer.dart';
+import 'containers/steponecontainer.dart';
+
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +17,10 @@ class WelcomeScreenThree extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.push(
+           Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const WelcomeScreenTwo(),
+                                    builder: (context) => const Disclaimer(),
                                   ),
                                 );
           },
@@ -100,7 +101,7 @@ class WelcomeScreenThree extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5.0),
                     child: const LinearProgressIndicator(
                       minHeight: 10,
-                      value: 3 / 5,
+                      value: 1 / 5,
                       backgroundColor: Colors.white,
                       color: AppColors.accentColor,
                     ),
@@ -113,7 +114,7 @@ class WelcomeScreenThree extends StatelessWidget {
             top: 350, 
             left: 50,
             right: 50,
-            child: StepThreeContainer(), 
+            child: StepOneContainer(), 
           ),
             ]
       ),]

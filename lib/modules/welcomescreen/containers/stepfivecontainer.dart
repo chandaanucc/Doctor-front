@@ -1,19 +1,17 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:ai_doc_app/modules/bottombar/bottombar.dart';
-import 'package:ai_doc_app/modules/welcomescreen/containers/stepfivecontainer.dart';
-import 'package:ai_doc_app/modules/welcomescreen/welcomefive.dart';
 import 'package:flutter/material.dart';
 import '../../../theme/app_color.dart';
 
-class StepFourContainer extends StatefulWidget {
-  const StepFourContainer({super.key});
+class StepFiveContainer extends StatefulWidget {
+  const StepFiveContainer({super.key});
 
   @override
   _StepFourContainerState createState() => _StepFourContainerState();
 }
 
-class _StepFourContainerState extends State<StepFourContainer> {
+class _StepFourContainerState extends State<StepFiveContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,40 +35,17 @@ class _StepFourContainerState extends State<StepFourContainer> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              'Step 4 / 5',
+              'Step 5 / 5',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 60),
             const Text(
-              'Do you have any existing\nMedication?',
+              'Analysis on your health based on your inputs\n\n Loading illustrations...',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 15, color: Colors.white),
             ),
-            const SizedBox(height: 20),
-            const SizedBox(
-              width: 250,
-              height: 35,
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Quick Search',
-                  fillColor: Colors.white,
-                  filled: true,
-                  suffixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              'Illustrative representation\nbased on the data\n\nSimilar to previous screen',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 15, color: Colors.white),
-            ),
-            const SizedBox(height: 40), // Increased the spacing before the buttons
+            const SizedBox(height: 140), // Increased the spacing before the buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -92,7 +67,7 @@ class _StepFourContainerState extends State<StepFourContainer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const WelcomeScreenFive(),
+                        builder: (context) => const BottomBar(),
                       ),
                     );
                   },

@@ -1,10 +1,11 @@
-import 'package:ai_doc_app/modules/welcomescreen/welcometwo.dart';
+import 'package:ai_doc_app/modules/welcomescreen/welcomefourth.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
-import 'containers/stepthreecontainer.dart';
+import 'containers/stepfivecontainer.dart';
+import 'containers/stepfourcontainer.dart';
 
-class WelcomeScreenThree extends StatelessWidget {
-  const WelcomeScreenThree({super.key});
+class WelcomeScreenFive extends StatelessWidget {
+  const WelcomeScreenFive({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class WelcomeScreenThree extends StatelessWidget {
             Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const WelcomeScreenTwo(),
+                                    builder: (context) => const WelcomeScreenFour(),
                                   ),
                                 );
           },
@@ -48,12 +49,12 @@ class WelcomeScreenThree extends StatelessWidget {
                 ),
               ),
               const Positioned(
-                top: 160,
+                top: 180,
                 right: 100,
                 left: 60,
                 child: Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n'
-                  ' Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,\n when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n',
+                  'Above Layouts can be customised \n based on detail below with creative writings...\n'
+                  ,
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.white,
@@ -63,15 +64,13 @@ class WelcomeScreenThree extends StatelessWidget {
               ),
               Positioned(
                 top: 10,
-                left:298,
+                left: 298,
                 right: 0,
                 child: Stack(
                   children: [
-                    
                     Positioned(
                       top: 10,
                       right: 0,
-                      
                       child: Image.asset(
                         'assets/images/bear.png',
                         width: 100,
@@ -87,36 +86,61 @@ class WelcomeScreenThree extends StatelessWidget {
                 ),
               ),
               Positioned(
-            top: 200,
-            left: 110,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: 120),
-                const SizedBox(height: 10),
-                SizedBox(
-                  width: 200,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(5.0),
-                    child: const LinearProgressIndicator(
-                      minHeight: 10,
-                      value: 3 / 5,
-                      backgroundColor: Colors.white,
-                      color: AppColors.accentColor,
+                top: 200,
+                left: 110,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 120),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      width: 200,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: const LinearProgressIndicator(
+                          minHeight: 10,
+                          value: 5 / 5,
+                          backgroundColor: Colors.white,
+                          color: AppColors.accentColor,
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              const Positioned(
+                top: 350,
+                left: 50,
+                right: 50,
+                child: StepFiveContainer(),
+              ),
+              Positioned(
+                top: 800, // Positioning for the "OR" and "Examine Later"
+                left: 0,
+                right: 0,
+                child: Column(
+                  children: [
+                    const Text(
+                      'OR',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                    const SizedBox(height: 5),
+                    TextButton(
+                      onPressed: () {
+                        // Handle Examine Later action
+                      },
+                      child: const Text(
+                        'Examine Later',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          const Positioned(
-            top: 350, 
-            left: 50,
-            right: 50,
-            child: StepThreeContainer(), 
-          ),
-            ]
-      ),]
-    ));
+        ],
+      ),
+    );
   }
 }

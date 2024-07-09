@@ -253,7 +253,7 @@ class _BottomBarState extends State<BottomBar> {
       ),
       bottomNavigationBar: BottomAppBar(
         clipBehavior: Clip.antiAlias,
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 8,
         color: AppColors.primaryColor,
         child: Row(

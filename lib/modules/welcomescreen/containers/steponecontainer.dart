@@ -1,5 +1,4 @@
 // ignore_for_file: library_private_types_in_public_api
-
 import 'package:ai_doc_app/modules/welcomescreen/welcometwo.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
@@ -16,13 +15,13 @@ class _StepOneContainerState extends State<StepOneContainer> {
   double height = 0;
   double weight = 0;
   String? selectedEthnicity;
-  final List<String> ethnicities = ['Asian', 'Black', 'Hispanic', 'White', 'Other'];
+  final List<String> ethnicities = ['Indian', 'American', 'European', 'German', 'Other'];
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 290,
-      height: 485,
+      height: 500,
       decoration: BoxDecoration(
         color: AppColors.accentColor, // Change this to your desired accent color
         borderRadius: BorderRadius.circular(20),
@@ -38,57 +37,115 @@ class _StepOneContainerState extends State<StepOneContainer> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Center(
+              child: Text(
+                'Step 1 / 5',
+                style: TextStyle(fontSize: 15, color: Colors.white),
+              ),
+            ),
+            const SizedBox(height: 10),
             const Text(
               'What is your age?',
-              style: TextStyle(fontSize: 16, color: Colors.white),
+              style: TextStyle(fontSize: 14, color: Colors.white),
             ),
-            Slider(
-              value: age,
-              min: 0,
-              max: 100,
-              divisions: 100,
-              label: age.round().toString(),
-              onChanged: (double value) {
-                setState(() {
-                  age = value;
-                });
-              },
+            Row(
+              children: [
+                const Text('0', style: TextStyle(color: Colors.white)),
+                Expanded(
+                  child: SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      trackHeight: 8.0,  // Adjust this value as needed
+                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                      // Adjust the thumb size as needed
+                    ),
+                    child: Slider(
+                      activeColor: AppColors.primaryColor,
+                      thumbColor: Colors.white,
+                      value: age,
+                      min: 0,
+                      max: 100,
+                      divisions: 100,
+                      label: age.round().toString(),
+                      onChanged: (double value) {
+                        setState(() {
+                          age = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                const Text('100', style: TextStyle(color: Colors.white)),
+              ],
             ),
             const SizedBox(height: 20),
             const Text(
               'What is your height?',
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
-            Slider(
-              value: height,
-              min: 0,
-              max: 100,
-              divisions: 100,
-              label: height.round().toString(),
-              onChanged: (double value) {
-                setState(() {
-                  height = value;
-                });
-              },
+            Row(
+              children: [
+                const Text('0', style: TextStyle(color: Colors.white)),
+                Expanded(
+                  child: SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      trackHeight: 8.0,  // Adjust this value as needed
+                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                      // Adjust the thumb size as needed
+                    ),
+                    child: Slider(
+                      activeColor: AppColors.primaryColor,
+                      thumbColor: Colors.white,
+                      value: height,
+                      min: 0,
+                      max: 100,
+                      divisions: 100,
+                      label: height.round().toString(),
+                      onChanged: (double value) {
+                        setState(() {
+                          height = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                const Text('100', style: TextStyle(color: Colors.white)),
+              ],
             ),
             const SizedBox(height: 20),
             const Text(
               'What is your weight?',
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
-            Slider(
-              value: weight,
-              min: 0,
-              max: 100,
-              divisions: 100,
-              label: weight.round().toString(),
-              onChanged: (double value) {
-                setState(() {
-                  weight = value;
-                });
-              },
+            Row(
+              children: [
+                const Text('0', style: TextStyle(color: Colors.white)),
+                Expanded(
+                  child: SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      trackHeight: 8.0,  // Adjust this value as needed
+                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                      // Adjust the thumb size as needed
+                    ),
+                    child: Slider(
+                      activeColor: AppColors.primaryColor,
+                      thumbColor: Colors.white,
+                      value: weight,
+                      min: 0,
+                      max: 100,
+                      divisions: 100,
+                      label: weight.round().toString(),
+                      onChanged: (double value) {
+                        setState(() {
+                          weight = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                const Text('100', style: TextStyle(color: Colors.white)),
+              ],
             ),
             const SizedBox(height: 20),
             const Text(
@@ -96,69 +153,70 @@ class _StepOneContainerState extends State<StepOneContainer> {
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
             const SizedBox(height: 10), // Add spacing between the question and the dropdown
-            Container(
-              width: 200,
-              height:30,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: DropdownButton<String>(
-                value: selectedEthnicity,
-                hint: const Text(
-                  'Choose from below',
-                  style: TextStyle(color: AppColors.accentColor), // Hint text color
+            Center(
+              child: Container(
+                width: 230,
+                height: 30,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5),
                 ),
-                icon: const Icon(Icons.arrow_drop_down, color: Colors.black),
-                iconSize: 24,
-                elevation: 16,
-                style: const TextStyle(color: Colors.black),
-                dropdownColor: Colors.white,
-                underline: Container(
-                  height: 0,
-                  color: Colors.transparent,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0), // Add padding here
+                  child: DropdownButton<String>(
+                    value: selectedEthnicity,
+                    hint: const Text(
+                      'Choose from below',
+                      style: TextStyle(color:Colors.grey), // Hint text color
+                    ),
+                    icon: const Icon(Icons.expand_more, color: AppColors.accentColor),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.black),
+                    dropdownColor: Colors.white,
+                    underline: Container(
+                      height: 0,
+                      color: Colors.transparent,
+                    ),
+                    isDense: true,
+                    isExpanded: true, // This ensures the arrow is aligned to the right
+                    alignment: Alignment.centerLeft,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectedEthnicity = newValue;
+                      });
+                    },
+                    items: ethnicities.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
                 ),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedEthnicity = newValue;
-                  });
-                },
-                items: ethnicities.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
             ),
             const SizedBox(height: 40),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
                   onPressed: () {
-                    // Handle Later action
-                  },
-                  child: const Text(
-                    'Later',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
                     Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const WelcomeScreenTwo()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const WelcomeScreenTwo(),
+                      ),
+                    );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white, // Button color
+                  style: TextButton.styleFrom(
+                    backgroundColor: AppColors.accentColor, // Button color
+                    side: const BorderSide(color: Colors.white, width: 2.0),
                   ),
                   child: const Row(
                     children: [
-                      Text('Continue', style: TextStyle(color: Colors.blueGrey)),
-                      Icon(Icons.arrow_right, color: Colors.blueGrey),
+                      Text('Continue', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
+                      Icon(Icons.arrow_right, color: Colors.white),
                     ],
                   ),
                 ),

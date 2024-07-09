@@ -1,4 +1,5 @@
-import 'package:ai_doc_app/modules/welcomescreen/welcome.dart';
+import 'package:ai_doc_app/modules/signupscreen/signup.dart';
+import 'package:ai_doc_app/modules/welcomescreen/welcomeone.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,21 @@ class Disclaimer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.grey),
+          onPressed: () {
+           Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignUpScreen(),
+                                  ),
+                                );
+          },
+        ),
+      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -28,11 +44,11 @@ class Disclaimer extends StatelessWidget {
           // Content centered in the scaffold
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 70),
+              padding: const EdgeInsets.only(bottom: 20),
               child: SingleChildScrollView(
                 child: Container(
                   width: 290,
-                  height: 485,
+                  height: 500,
                   decoration: BoxDecoration(
                     color: AppColors.accentColor,
                     borderRadius: BorderRadius.circular(20),
@@ -64,7 +80,7 @@ class Disclaimer extends StatelessWidget {
                         const Text(
                           'Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. \nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 12,
                             color: AppColors.textColor,
                           ),
                           textAlign: TextAlign.center,

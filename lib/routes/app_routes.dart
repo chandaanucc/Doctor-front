@@ -15,6 +15,7 @@
 //       login: (context) => const LoginScreen(),
 //       signup: (context) => const SignUpScreen(),
 //       disclaimer: (context) => const Disclaimer(),
+//       welcome: (context) => const WelcomeScreen()
 //     };
 //   }
 // }
