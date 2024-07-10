@@ -1,23 +1,25 @@
-// ignore_for_file: library_private_types_in_public_api
-
+import 'package:flutter/material.dart';
 import 'package:ai_doc_app/modules/welcomescreen/welcomefourth.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class StepThreeContainer extends StatefulWidget {
-  const StepThreeContainer({super.key});
+  const StepThreeContainer({Key? key}) : super(key: key);
 
   @override
   _StepThreeContainerState createState() => _StepThreeContainerState();
 }
 
 class _StepThreeContainerState extends State<StepThreeContainer> {
+  late double screenWidth;
+  late double screenHeight;
+
   @override
   Widget build(BuildContext context) {
+    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
-      width: 290,
-      height: 490,
+      width: screenWidth * 0.8,
       decoration: BoxDecoration(
         color: AppColors.accentColor,
         borderRadius: BorderRadius.circular(20),
@@ -31,26 +33,32 @@ class _StepThreeContainerState extends State<StepThreeContainer> {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(screenWidth * 0.05),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Step 3 / 5',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.white),
+              style: TextStyle(
+                fontSize: screenWidth * 0.04,
+                color: Colors.white,
+              ),
             ),
-            const SizedBox(height: 10),
-            const Text(
+            SizedBox(height: screenHeight * 0.02),
+            Text(
               'Do you have any existing\n conditions that I should be aware?',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyle(
+                fontSize: screenWidth * 0.038,
+                color: Colors.white,
+              ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.03),
             GridView.count(
               crossAxisCount: 3,
-              crossAxisSpacing: 5,
-              mainAxisSpacing: 5,
+              crossAxisSpacing: screenWidth * 0.02,
+              mainAxisSpacing: screenWidth * 0.02,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
@@ -60,65 +68,65 @@ class _StepThreeContainerState extends State<StepThreeContainer> {
                 _buildConditionCard('assets/icons/fire.png', 'Fire'),
                 _buildConditionCard('assets/icons/gastro.png', 'Gastro'),
                 _buildConditionCard('assets/icons/urologist.png', 'Urologist'),
-                _buildConditionCard('assets/icons/neurologist.png', 'Neurologist'),
+                _buildConditionCard('assets/icons/neurologist.png', 'Neurology'),
               ],
             ),
-            const SizedBox(height: 10),
-            const Padding(
-              padding:EdgeInsets.only(left:14),
-              child: Align(alignment:Alignment.centerLeft,child: Text('Others', style: TextStyle(fontSize: 15, color:Colors.white ),))),
-            const SizedBox(height:5),
-            const SizedBox(
-              width:250,
-              height:35,
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Quick Search',
-                  fillColor: Colors.white,
-                  filled: true,
-                  suffixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            SizedBox(height: screenHeight * 0.02),
+            Padding(
+              padding: EdgeInsets.only(left: screenWidth * 0.04),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Others',
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.038,
+                    color: Colors.white,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 ),
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: screenHeight * 0.01),
+            SizedBox(
+              width: screenWidth * 0.7,
+              height: screenHeight * 0.05,
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Quick Search',
+                  hintStyle: TextStyle(fontSize: screenWidth * 0.035),
+                  fillColor: Colors.white,
+                  filled: true,
+                  suffixIcon: Icon(Icons.search, size: screenWidth * 0.05),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(screenWidth * 0.025)),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: screenHeight * 0.01,
+                    horizontal: screenWidth * 0.03,
+                  ),
+                ),
+                style: TextStyle(fontSize: screenWidth * 0.035),
+              ),
+            ),
+            SizedBox(height: screenHeight * 0.04),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle Later action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor
-                  ),
-                  child: const Text(
-                    'Examine Later',
-                    style: TextStyle(color: Colors.white),
-                  )
+                _buildButton(
+                  context,
+                  'Examine Later',
+                  AppColors.primaryColor,
+                  Colors.white,
+                  screenWidth * 0.3,
+                  false,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const WelcomeScreenFour(),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.accentColor,
-                    side: const BorderSide(color: Colors.white, width: 2.0),
-                  ),
-                  child: const Row(
-                    children: [
-                      Text('Continue', style: TextStyle(color: Colors.white)),
-                      Icon(Icons.arrow_right, color: Colors.white),
-                    ],
-                  ),
+                SizedBox(width: screenWidth * 0.02),
+                _buildButton(
+                  context,
+                  'Continue',
+                  AppColors.accentColor,
+                  Colors.white,
+                  screenWidth * 0.3,
+                  true,
                 ),
               ],
             ),
@@ -132,30 +140,73 @@ class _StepThreeContainerState extends State<StepThreeContainer> {
     return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
+        borderRadius: BorderRadius.circular(screenWidth * 0.05),
       ),
-      margin: const EdgeInsets.all(10),
+      margin: EdgeInsets.all(screenWidth * 0.02),
       child: Padding(
-        padding: const EdgeInsets.all(4.0), // Minimal padding
+        padding: EdgeInsets.all(screenWidth * 0.01),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
               iconPath,
-              width: 40, // Reduced icon size
-              height: 40,
+              width: screenWidth * 0.1,
+              height: screenWidth * 0.1,
             ),
-            const SizedBox(height: 5),
+            SizedBox(height: screenWidth * 0.01),
             Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 10, // Reduced font size
+              style: TextStyle(
+                fontSize: screenWidth * 0.03,
                 color: AppColors.accentColor,
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildButton(BuildContext context, String text, Color bgColor, Color textColor, double buttonWidth, bool navigateToNextScreen) {
+    return SizedBox(
+      width: buttonWidth,
+      height: screenHeight * 0.06,
+      child: ElevatedButton(
+        onPressed: navigateToNextScreen
+            ? () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WelcomeScreenFour(),
+                  ),
+                );
+              }
+            : () {
+                // Handle Later action
+              },
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.symmetric(vertical: screenHeight * 0.015),
+          backgroundColor: bgColor,
+          side: navigateToNextScreen
+              ? BorderSide(color: textColor, width: buttonWidth * 0.01)
+              : null,
+          textStyle: TextStyle(
+            fontSize: screenWidth * 0.035,
+          ),
+        ),
+        child: navigateToNextScreen
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(text, style: TextStyle(fontSize: screenWidth * 0.035, color: textColor)),
+                  Icon(Icons.arrow_right, color: textColor, size: screenWidth * 0.035),
+                ],
+              )
+            : FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(text, style: TextStyle(fontSize: screenWidth * 0.035, color: textColor)),
+              ),
       ),
     );
   }

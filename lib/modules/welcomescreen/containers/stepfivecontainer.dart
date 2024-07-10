@@ -1,22 +1,18 @@
-// ignore_for_file: library_private_types_in_public_api
-
-import 'package:ai_doc_app/modules/bottombar/bottombar.dart';
 import 'package:flutter/material.dart';
-import '../../../theme/app_color.dart';
+import 'package:ai_doc_app/theme/app_color.dart';
+import 'package:ai_doc_app/modules/bottombar/bottombar.dart';
 
-class StepFiveContainer extends StatefulWidget {
-  const StepFiveContainer({super.key});
+class StepFiveContainer extends StatelessWidget {
+  const StepFiveContainer({Key? key}) : super(key: key);
 
-  @override
-  _StepFourContainerState createState() => _StepFourContainerState();
-}
-
-class _StepFourContainerState extends State<StepFiveContainer> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
-      width: 290,
-      height: 440, // Reduced the height of the container
+      width: screenWidth * 0.8, // Adjusted width for responsiveness
+      height: screenHeight * 0.6, // Adjusted height for responsiveness
       decoration: BoxDecoration(
         color: AppColors.accentColor,
         borderRadius: BorderRadius.circular(20),
@@ -30,60 +26,36 @@ class _StepFourContainerState extends State<StepFiveContainer> {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(screenWidth * 0.05), // Adjusted padding for responsiveness
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Step 5 / 5',
+              style: TextStyle(fontSize: screenWidth * 0.04, color: Colors.white),
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.white),
             ),
-            const SizedBox(height: 60),
-            const Text(
+            SizedBox(height: screenHeight * 0.1), // Adjusted height for spacing
+            Text(
               'Analysis on your health based on your inputs\n\n Loading illustrations...',
+              style: TextStyle(fontSize: screenWidth * 0.035, color: Colors.white),
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 15, color: Colors.white),
             ),
-            const SizedBox(height: 140), // Increased the spacing before the buttons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle Calculate Risk action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor,
-                    minimumSize: const Size(120, 35), // Set a fixed size
-                  ),
-                  child: const Text(
-                    'Calculate Risk',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const BottomBar(),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.accentColor,
-                    side: const BorderSide(color: Colors.white, width: 2.0),
-                    minimumSize: const Size(120, 35), // Set a fixed size
-                  ),
-                  child: const Row(
-                    children: [
-                      Text('Continue', style: TextStyle(color: Colors.white)),
-                      Icon(Icons.arrow_right, color: Colors.white),
-                    ],
-                  ),
-                ),
-              ],
+            SizedBox(height: screenHeight * 0.15), // Adjusted height for spacing
+            ElevatedButton(
+              onPressed: () {
+                // Handle Calculate Risk action
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primaryColor,
+                padding: EdgeInsets.symmetric(vertical: screenHeight * 0.03, horizontal: screenWidth * 0.05),
+                minimumSize: Size(screenWidth * 0.7, screenHeight * 0.07), // Adjusted size for responsiveness
+              ),
+              child: Text(
+                'Calculating Risk based on your inputs',
+                style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04),
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),

@@ -1,15 +1,19 @@
 import 'package:ai_doc_app/modules/welcomescreen/welcomethree.dart';
-import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:ai_doc_app/theme/app_color.dart';
 import 'containers/stepfourcontainer.dart';
 
 class WelcomeScreenFour extends StatelessWidget {
-  const WelcomeScreenFour({super.key});
+  const WelcomeScreenFour({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      extendBodyBehindAppBar: true, 
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -17,120 +21,136 @@ class WelcomeScreenFour extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const WelcomeScreenThree(),
-                                  ),
-                                );
+              context,
+              MaterialPageRoute(
+                builder: (context) => const WelcomeScreenThree(),
+              ),
+            );
           },
         ),
-      ),
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              color: AppColors.primaryColor,
-            ),
-          ),
-          Stack(
-            children: [
-              const Positioned(
-                top: 100,
-                right: 100,
-                left: 60,
-                child: Text(
-                  'Welcome !',
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Positioned(
-                top: 160,
-                right: 100,
-                left: 60,
-                child: Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n'
-                  ' Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,\n when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 10,
-                left: 298,
-                right: 0,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: 10,
-                      right: 0,
-                      child: Image.asset(
-                        'assets/images/bear.png',
-                        width: 100,
-                        height: 190,
-                      ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close, color: Colors.white),
+            onPressed: () async {
+              bool exit = await showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Exit App'),
+                  content: const Text('Are you sure you want to exit the app?'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      child: const Text('No'),
                     ),
-                    Image.asset(
-                      'assets/images/white circles.png',
-                      width: 200,
-                      height: 250,
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(true),
+                      child: const Text('Yes'),
                     ),
                   ],
                 ),
+              );
+              if (exit ?? false) {
+                SystemNavigator.pop();
+              }
+            },
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          color: AppColors.primaryColor,
+          child: Stack(
+            children: [
+              Container(
+                height: screenHeight,
+                decoration: const BoxDecoration(
+                  color: AppColors.primaryColor,
+                ),
               ),
               Positioned(
-                top: 200,
-                left: 110,
+                top: screenHeight * 0.0,
+                right: 0,
+                child: Image.asset(
+                  'assets/images/bear.png',
+                  width: screenWidth * 0.2,
+                  height: screenHeight * 0.25,
+                ),
+              ),
+              Positioned(
+                top: screenHeight * 0.02,
+                right: screenWidth * 0.00,
+                child: Image.asset(
+                  'assets/images/white circles.png',
+                  width: screenWidth * 0.35,
+                  height: screenHeight * 0.3,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                  screenWidth * 0.1,
+                  screenHeight * 0.15,
+                  screenWidth * 0.1,
+                  screenHeight * 0.02,
+                ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 120),
-                    const SizedBox(height: 10),
+                    Text(
+                      'Welcome!',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.08,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * 0.02),
                     SizedBox(
-                      width: 200,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5.0),
-                        child: const LinearProgressIndicator(
-                          minHeight: 10,
-                          value: 4 / 5,
-                          backgroundColor: Colors.white,
-                          color: AppColors.accentColor,
+                      width: screenWidth * 0.8,
+                      child: Text(
+                        'Lorem Ipsum is simply dummy text of the printing\n and typesetting industry. '
+                        'Lorem Ipsum has been the industry’s standard dummy text\n ever since the 1500s, '
+                        'when an unknown printer took a galley of type and scrambled it to\n make a type specimen book.',
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.030,
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              const Positioned(
-                top: 350,
-                left: 50,
-                right: 50,
-                child: StepFourContainer(),
-              ),
-              Positioned(
-                top: 800, // Positioning for the "OR" and "Examine Later"
-                left: 0,
-                right: 0,
-                child: Column(
-                  children: [
-                    const Text(
-                      'OR',
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    SizedBox(height: screenHeight * 0.03),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: screenWidth * 0.2,
+                      ),
+                      child: LinearProgressIndicator(
+                        minHeight: screenHeight * 0.01,
+                        value: 4 / 5,
+                        backgroundColor: Colors.white,
+                        color: AppColors.accentColor,
+                        borderRadius: BorderRadius.circular(screenWidth * 0.02),
+                      ),
                     ),
-                    const SizedBox(height: 5),
-                    TextButton(
-                      onPressed: () {
-                        // Handle Examine Later action
-                      },
-                      child: const Text(
-                        'Examine Later',
-                        style: TextStyle(color: Colors.white),
+                    SizedBox(height: screenHeight * 0.03),
+                    Center(child: StepFourContainer()),
+                    SizedBox(height: screenHeight * 0.02),
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'OR',
+                            style: TextStyle(fontSize: screenWidth * 0.04, color: Colors.white),
+                          ),
+                          SizedBox(width: screenWidth * 0.02),
+                          TextButton(
+                            onPressed: () {
+                              // Handle Examine Later action
+                            },
+                            child: Text(
+                              'Examine Later',
+                              style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -138,7 +158,7 @@ class WelcomeScreenFour extends StatelessWidget {
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

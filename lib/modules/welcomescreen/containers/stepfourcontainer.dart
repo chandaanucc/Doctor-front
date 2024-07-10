@@ -1,13 +1,9 @@
-// ignore_for_file: library_private_types_in_public_api
-
-import 'package:ai_doc_app/modules/bottombar/bottombar.dart';
-import 'package:ai_doc_app/modules/welcomescreen/containers/stepfivecontainer.dart';
-import 'package:ai_doc_app/modules/welcomescreen/welcomefive.dart';
 import 'package:flutter/material.dart';
-import '../../../theme/app_color.dart';
+import 'package:ai_doc_app/theme/app_color.dart';
+import 'package:ai_doc_app/modules/welcomescreen/welcomefive.dart';
 
 class StepFourContainer extends StatefulWidget {
-  const StepFourContainer({super.key});
+  const StepFourContainer({Key? key}) : super(key: key);
 
   @override
   _StepFourContainerState createState() => _StepFourContainerState();
@@ -16,9 +12,12 @@ class StepFourContainer extends StatefulWidget {
 class _StepFourContainerState extends State<StepFourContainer> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
-      width: 290,
-      height: 440, // Reduced the height of the container
+      width: screenWidth * 0.8, // Adjusted width for responsiveness
+      height: screenHeight * 0.6, // Adjusted height for responsiveness
       decoration: BoxDecoration(
         color: AppColors.accentColor,
         borderRadius: BorderRadius.circular(20),
@@ -32,25 +31,23 @@ class _StepFourContainerState extends State<StepFourContainer> {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(screenWidth * 0.05), // Adjusted padding for responsiveness
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Step 4 / 5',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.white),
+              style: TextStyle(fontSize: screenWidth * 0.05, color: Colors.white),
             ),
-            const SizedBox(height: 10),
-            const Text(
+            SizedBox(height: screenHeight * 0.02),
+            Text(
               'Do you have any existing\nMedication?',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyle(fontSize: screenWidth * 0.04, color: Colors.white),
             ),
-            const SizedBox(height: 20),
-            const SizedBox(
-              width: 250,
-              height: 35,
+            SizedBox(height: screenHeight * 0.03),
+            SizedBox(
+              width: screenWidth * 0.8,
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Quick Search',
@@ -58,35 +55,37 @@ class _StepFourContainerState extends State<StepFourContainer> {
                   filled: true,
                   suffixIcon: Icon(Icons.search),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    borderRadius: BorderRadius.all(Radius.circular(screenWidth * 0.03)),
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  contentPadding: EdgeInsets.symmetric(vertical: screenHeight * 0.01, horizontal: screenWidth * 0.02),
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: screenHeight * 0.03),
+            Text(
               'Illustrative representation\nbased on the data\n\nSimilar to previous screen',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 15, color: Colors.white),
+              style: TextStyle(fontSize: screenWidth * 0.04, color: Colors.white),
             ),
-            const SizedBox(height: 40), // Increased the spacing before the buttons
+            SizedBox(height: screenHeight * 0.04),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Handle Calculate Risk action
+                    // Handle Examine Later action
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
-                    minimumSize: const Size(120, 35), // Set a fixed size
+                    padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02, horizontal: screenWidth * 0.04),
+                    minimumSize: Size(screenWidth * 0.35, screenHeight * 0.07), // Adjusted size for responsiveness
                   ),
-                  child: const Text(
-                    'Calculate Risk',
-                    style: TextStyle(color: Colors.white),
+                  child: Text(
+                    'Examine Later',
+                    style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04),
                   ),
                 ),
+                SizedBox(width: screenWidth * 0.02), // Added space between buttons
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(
@@ -98,13 +97,16 @@ class _StepFourContainerState extends State<StepFourContainer> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.accentColor,
-                    side: const BorderSide(color: Colors.white, width: 2.0),
-                    minimumSize: const Size(120, 35), // Set a fixed size
+                    padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02, horizontal: screenWidth * 0.04),
+                    side: BorderSide(color: Colors.white, width: 2.0),
+                    minimumSize: Size(screenWidth * 0.35, screenHeight * 0.07), // Adjusted size for responsiveness
                   ),
-                  child: const Row(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('Continue', style: TextStyle(color: Colors.white)),
-                      Icon(Icons.arrow_right, color: Colors.white),
+                      Text('Continue', style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04)),
+                      SizedBox(width: screenWidth * 0.02),
+                      Icon(Icons.arrow_right, color: Colors.white, size: screenWidth * 0.05),
                     ],
                   ),
                 ),

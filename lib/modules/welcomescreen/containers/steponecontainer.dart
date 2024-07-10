@@ -1,10 +1,9 @@
-// ignore_for_file: library_private_types_in_public_api
-import 'package:ai_doc_app/modules/welcomescreen/welcometwo.dart';
-import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:ai_doc_app/theme/app_color.dart';
+import '../welcometwo.dart';
 
 class StepOneContainer extends StatefulWidget {
-  const StepOneContainer({super.key});
+  const StepOneContainer({Key? key}) : super(key: key);
 
   @override
   _StepOneContainerState createState() => _StepOneContainerState();
@@ -19,36 +18,38 @@ class _StepOneContainerState extends State<StepOneContainer> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
-      width: 290,
-      height: 500,
+      width: screenWidth * 0.8, // 80% of screen width
+      padding: EdgeInsets.all(screenWidth * 0.05),
       decoration: BoxDecoration(
-        color: AppColors.accentColor, // Change this to your desired accent color
-        borderRadius: BorderRadius.circular(20),
+        color: AppColors.accentColor,
+        borderRadius: BorderRadius.circular(screenWidth * 0.05),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
-            spreadRadius: 5,
-            blurRadius: 10,
+            spreadRadius: screenWidth * 0.02,
+            blurRadius: screenWidth * 0.05,
             offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
+            Center(
               child: Text(
                 'Step 1 / 5',
-                style: TextStyle(fontSize: 15, color: Colors.white),
+                style: TextStyle(fontSize: screenWidth * 0.04, color: Colors.white),
               ),
             ),
-            const SizedBox(height: 10),
-            const Text(
+            SizedBox(height: screenHeight * 0.02),
+            Text(
               'What is your age?',
-              style: TextStyle(fontSize: 14, color: Colors.white),
+              style: TextStyle(fontSize: screenWidth * 0.035, color: Colors.white),
             ),
             Row(
               children: [
@@ -56,9 +57,8 @@ class _StepOneContainerState extends State<StepOneContainer> {
                 Expanded(
                   child: SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      trackHeight: 8.0,  // Adjust this value as needed
-                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
-                      // Adjust the thumb size as needed
+                      trackHeight: screenHeight * 0.015,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: screenWidth * 0.03),
                     ),
                     child: Slider(
                       activeColor: AppColors.primaryColor,
@@ -79,10 +79,10 @@ class _StepOneContainerState extends State<StepOneContainer> {
                 const Text('100', style: TextStyle(color: Colors.white)),
               ],
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: screenHeight * 0.03),
+            Text(
               'What is your height?',
-              style: TextStyle(fontSize: 16, color: Colors.white),
+              style: TextStyle(fontSize: screenWidth * 0.035, color: Colors.white),
             ),
             Row(
               children: [
@@ -90,9 +90,8 @@ class _StepOneContainerState extends State<StepOneContainer> {
                 Expanded(
                   child: SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      trackHeight: 8.0,  // Adjust this value as needed
-                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
-                      // Adjust the thumb size as needed
+                      trackHeight: screenHeight * 0.015,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: screenWidth * 0.03),
                     ),
                     child: Slider(
                       activeColor: AppColors.primaryColor,
@@ -113,10 +112,10 @@ class _StepOneContainerState extends State<StepOneContainer> {
                 const Text('100', style: TextStyle(color: Colors.white)),
               ],
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: screenHeight * 0.03),
+            Text(
               'What is your weight?',
-              style: TextStyle(fontSize: 16, color: Colors.white),
+              style: TextStyle(fontSize: screenWidth * 0.035, color: Colors.white),
             ),
             Row(
               children: [
@@ -124,9 +123,8 @@ class _StepOneContainerState extends State<StepOneContainer> {
                 Expanded(
                   child: SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      trackHeight: 8.0,  // Adjust this value as needed
-                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
-                      // Adjust the thumb size as needed
+                      trackHeight: screenHeight * 0.015,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: screenWidth * 0.03),
                     ),
                     child: Slider(
                       activeColor: AppColors.primaryColor,
@@ -147,77 +145,86 @@ class _StepOneContainerState extends State<StepOneContainer> {
                 const Text('100', style: TextStyle(color: Colors.white)),
               ],
             ),
-            const SizedBox(height: 20),
-            const Text(
+            SizedBox(height: screenHeight * 0.03),
+            Text(
               'What is your ethnicity?',
-              style: TextStyle(fontSize: 16, color: Colors.white),
+              style: TextStyle(fontSize: screenWidth * 0.035, color: Colors.white),
             ),
-            const SizedBox(height: 10), // Add spacing between the question and the dropdown
+            SizedBox(height: screenHeight * 0.015),
             Center(
               child: Container(
-                width: 230,
-                height: 30,
+                width: screenWidth * 0.65, // 65% of screen width
+                height: screenHeight * 0.035, // Adjusted height for dropdown
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(screenHeight * 0.01),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0), // Add padding here
-                  child: DropdownButton<String>(
-                    value: selectedEthnicity,
-                    hint: const Text(
-                      'Choose from below',
-                      style: TextStyle(color:Colors.grey), // Hint text color
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+                  child: Center(
+                    child: DropdownButton<String>(
+                      value: selectedEthnicity,
+                      hint: Text(
+                        'Choose from below',
+                        style: TextStyle(color: Colors.grey, fontSize: screenWidth * 0.03),
+                      ),
+                      icon: Icon(Icons.expand_more, color: AppColors.accentColor, size: screenWidth * 0.06),
+                      elevation: 16,
+                      style: TextStyle(color: Colors.black, fontSize: screenWidth * 0.04),
+                      dropdownColor: Colors.white,
+                      underline: Container(
+                        height: 0,
+                        color: Colors.transparent,
+                      ),
+                      isDense: true,
+                      isExpanded: true,
+                      alignment: Alignment.centerLeft,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedEthnicity = newValue;
+                        });
+                      },
+                      items: ethnicities.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
-                    icon: const Icon(Icons.expand_more, color: AppColors.accentColor),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: const TextStyle(color: Colors.black),
-                    dropdownColor: Colors.white,
-                    underline: Container(
-                      height: 0,
-                      color: Colors.transparent,
-                    ),
-                    isDense: true,
-                    isExpanded: true, // This ensures the arrow is aligned to the right
-                    alignment: Alignment.centerLeft,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedEthnicity = newValue;
-                      });
-                    },
-                    items: ethnicities.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 40),
+            SizedBox(height: screenHeight * 0.04),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const WelcomeScreenTwo(),
-                      ),
-                    );
-                  },
-                  style: TextButton.styleFrom(
-                    backgroundColor: AppColors.accentColor, // Button color
-                    side: const BorderSide(color: Colors.white, width: 2.0),
-                  ),
-                  child: const Row(
-                    children: [
-                      Text('Continue', textAlign: TextAlign.center, style: TextStyle(color: Colors.white)),
-                      Icon(Icons.arrow_right, color: Colors.white),
-                    ],
+                Container(
+                  constraints: const BoxConstraints(minWidth: 120),
+                  height: 35,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const WelcomeScreenTwo(),
+                        ),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: AppColors.accentColor,
+                      side: const BorderSide(color: Colors.white),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Continue',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Icon(Icons.arrow_right, color: Colors.white),
+                      ],
+                    ),
                   ),
                 ),
               ],

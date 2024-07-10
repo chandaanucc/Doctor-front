@@ -1,11 +1,9 @@
-// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api
-
-import 'package:ai_doc_app/modules/welcomescreen/welcomethree.dart';
-import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:ai_doc_app/theme/app_color.dart';
+import 'package:ai_doc_app/modules/welcomescreen/welcomethree.dart';
 
 class StepTwoContainer extends StatefulWidget {
-  const StepTwoContainer({Key? key});
+  const StepTwoContainer({Key? key}) : super(key: key);
 
   @override
   _StepTwoContainerState createState() => _StepTwoContainerState();
@@ -17,45 +15,46 @@ class _StepTwoContainerState extends State<StepTwoContainer> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
-      width: 290,
-      height: 485,
+      constraints: BoxConstraints(minWidth: screenWidth * 0.75),
       decoration: BoxDecoration(
         color: AppColors.accentColor,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(screenWidth * 0.05),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
-            spreadRadius: 5,
-            blurRadius: 10,
+            spreadRadius: screenWidth * 0.02,
+            blurRadius: screenWidth * 0.05,
             offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(screenWidth * 0.05),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            const Center(
-              child: Text(
-                'Step 2 / 5',
-                style: TextStyle(fontSize: 15, color: Colors.white),
-              ),
+            const Text(
+              'Step 2 / 5',
+              style: TextStyle(fontSize: 15, color: Colors.white),
             ),
-            const SizedBox(height: 60),
+            SizedBox(height: screenHeight * 0.02),
             const Text(
               'What is your weight?',
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.02),
             ToggleButtons(
               borderColor: Colors.white,
               fillColor: Colors.white,
-              borderWidth: 2,
+              borderWidth: screenWidth * 0.005,
               selectedBorderColor: Colors.white,
               selectedColor: AppColors.accentColor,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(screenWidth * 0.04),
               isSelected: [isLbs, !isLbs],
               onPressed: (int index) {
                 setState(() {
@@ -65,7 +64,7 @@ class _StepTwoContainerState extends State<StepTwoContainer> {
               children: <Widget>[
                 Container(
                   color: isLbs ? Colors.white : AppColors.accentColor,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
                   child: Text(
                     'lbs',
                     style: TextStyle(
@@ -75,7 +74,7 @@ class _StepTwoContainerState extends State<StepTwoContainer> {
                 ),
                 Container(
                   color: !isLbs ? Colors.white : AppColors.accentColor,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
                   child: Text(
                     'kgs',
                     style: TextStyle(
@@ -85,33 +84,32 @@ class _StepTwoContainerState extends State<StepTwoContainer> {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center, // Center-align the children
-                children: [
-                  Text(
-                    '$weight',
-                    style: const TextStyle(
-                      fontSize: 40,
-                      color: Colors.white,
-                    ),
+            SizedBox(height: screenHeight * 0.02),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '$weight',
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.16,
+                    color: Colors.white,
                   ),
-                  Text(
-                    '\t ${isLbs ? 'lbs' : 'kgs'}',
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
+                ),
+                Text(
+                  ' ${isLbs ? 'lbs' : 'kgs'}',
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.08,
+                    color: Colors.white,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: screenHeight * 0.01),
             SliderTheme(
               data: SliderTheme.of(context).copyWith(
-                trackHeight: 8.0,  // Adjust this value as needed
-                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                trackHeight: screenHeight * 0.01,
+                thumbShape: RoundSliderThumbShape(enabledThumbRadius: screenWidth * 0.04),
+                overlayShape: RoundSliderOverlayShape(overlayRadius: screenWidth * 0.06),
               ),
               child: Slider(
                 value: weight,
@@ -128,66 +126,80 @@ class _StepTwoContainerState extends State<StepTwoContainer> {
                 },
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.02),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  width: 120, // Fixed width
-                  height: 35, // Fixed height
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30), // More rounded corners
-                    gradient: const LinearGradient(
-                      colors: [
-                        AppColors.primaryColor,
-                        Colors.white,
-                      ],
-                      stops: [0.63, 0.5],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                    ),
-                  ),
-                  child: Center(
-                    child: RichText(
-                      text: const TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Calculate',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            ),
-                          ),
-                          TextSpan(
-                            text: ' Risk',
-                            style: TextStyle(
-                              color: AppColors.primaryColor,
-                              fontSize: 14,
-                            ),
-                          ),
+                Expanded(
+                  child: Container(
+                    constraints: BoxConstraints(minWidth: screenWidth * 0.3),
+                    height: screenHeight * 0.06,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(screenHeight * 0.05),
+                      gradient: LinearGradient(
+                        colors: [
+                          AppColors.primaryColor,
+                          Colors.white,
                         ],
+                        stops: [0.63, 0.5],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        // Add your calculate risk functionality
+                      },
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.all(screenHeight * 0.015),
+                      ),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Calculate ',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: screenWidth * 0.035,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Risk',
+                              style: TextStyle(
+                                color: AppColors.primaryColor,
+                                fontSize: screenWidth * 0.035,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const WelcomeScreenThree(),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    minimumSize: const Size(120, 35), // Fixed size
-                  ),
-                  child: const Row(
-                    children: [
-                      Text('Continue', style: TextStyle(color: AppColors.accentColor)),
-                      Icon(Icons.arrow_right, color: AppColors.accentColor),
-                    ],
+                SizedBox(width: screenWidth * 0.02), // Added space
+                Container(
+                  constraints: BoxConstraints(minWidth: screenWidth * 0.3),
+                  height: screenHeight * 0.06,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const WelcomeScreenThree(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.accentColor,
+                      side: BorderSide(color: Colors.white),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Continue', style: TextStyle(color: Colors.white)),
+                        Icon(Icons.arrow_right, color: Colors.white),
+                      ],
+                    ),
                   ),
                 ),
               ],
