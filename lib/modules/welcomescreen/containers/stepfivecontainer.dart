@@ -44,6 +44,11 @@ class StepFiveContainer extends StatelessWidget {
             SizedBox(height: screenHeight * 0.15), // Adjusted height for spacing
             ElevatedButton(
               onPressed: () {
+
+                Navigator.push(
+          context, MaterialPageRoute(builder: (context) => BottomBar()
+         )
+         );
                 // Handle Calculate Risk action
               },
               style: ElevatedButton.styleFrom(

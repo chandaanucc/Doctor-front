@@ -1,135 +1,163 @@
-// import 'package:flutter/material.dart';
-
-// class WavyHeader extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return ClipPath(
-//       clipper: TopWaveClipper(),
-//       child: Container(
-//         decoration: BoxDecoration(
-//           gradient: LinearGradient(
-//             colors: [
-//               Color(0xFFFF9844),
-//               Color(0xFFFE8853),
-//               Color(0xFFFD7267),
-//             ],
-//             begin: Alignment.topLeft,
-//             end: Alignment.bottomRight,
-//           ),
-//         ),
-//         height: MediaQuery.of(context).size.height / 2.5,
-//         child: Center(
-//           child: Text(
-//             'Slanted AppBar',
-//             style: TextStyle(
-//               fontSize: 24,
-//               fontWeight: FontWeight.bold,
-//               color: Colors.white,
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class TopWaveClipper extends CustomClipper<Path> {
-//   @override
-//   Path getClip(Size size) {
-//     var path = Path();
-//     path.lineTo(0.0, size.height);
-
-//     var firstControlPoint = Offset(size.width / 7, size.height - 30);
-//     var firstEndPoint = Offset(size.width / 6, size.height / 1.5);
-
-//     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-//         firstEndPoint.dx, firstEndPoint.dy);
-
-//     var secondControlPoint = Offset(size.width / 5, size.height / 4);
-//     var secondEndPoint = Offset(size.width / 1.5, size.height / 5);
-    
-//     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
-//         secondEndPoint.dx, secondEndPoint.dy);
-
-//     var thirdControlPoint = Offset(size.width - (size.width / 9), size.height / 6);
-//     var thirdEndPoint = Offset(size.width, 0.0);
-    
-//     path.quadraticBezierTo(thirdControlPoint.dx, thirdControlPoint.dy,
-//         thirdEndPoint.dx, thirdEndPoint.dy);
-
-//     path.lineTo(size.width, 0.0);
-//     path.close();
-//     return path;
-//   }
-
-//   @override
-//   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-//     return false;
-//   }
-// }
-
-
-
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
-class WavyHeader extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: TopWaveClipper(),
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: orangeGradients,
-            begin: Alignment.topLeft,
-            end: Alignment.center,
+class PopupCard extends StatelessWidget {
+  _showPopupCard(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          insetPadding: EdgeInsets.symmetric(horizontal: 0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
           ),
-        ),
-        height: MediaQuery.of(context).size.height / 3, // Adjust height as needed
-        width: MediaQuery.of(context).size.width, // Full width of the screen
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.92,
+            height: MediaQuery.of(context).size.height * 0.69,
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Column(
+              children: <Widget>[
+                ClipPath(
+                  clipper: WaveClipperTwo(),
+                  child: Container(
+                    height: 170,
+                    width: 570,
+                    padding: EdgeInsets.only(top: 60, left: 20, right: 20),
+                    color: Colors.blue,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        // Add your widgets here
+                      ],
+                    ),
+                  ),
+                ),
+                _topChat(context),
+                SizedBox(height: 10),
+                _bodyChat(),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _topChat(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            '', // Adjust chat title text here
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          Row(
+            children: [
+              // Add your icons or buttons here
+            ],
+          ),
+        ],
       ),
     );
   }
-}
 
-class TopWaveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
+  Widget _bodyChat() {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 90),
+        child: ListView(
+          physics: BouncingScrollPhysics(),
+          children: [
+            _itemChat(
+              avatar: 'assets/image/5.jpg',
+              chat: 0,
+              message: 'Lorem Ipsum is simply dummy text.',
+              time: '18:00',
+            ),
+            _itemChat(
+              chat: 1,
+              message: 'Lorem Ipsum is simply dummy text',
+              time: '18:00', avatar: '',
+            ),
+            _itemChat(
+              avatar: 'assets/image/5.jpg',
+              chat: 0,
+              message: 'Lorem Ipsum is simply dummy text',
+              time: '18:00',
+            ),
+            _itemChat(
+              chat: 1,
+              message: 'Lorem Ipsum is simply ',
+              time: '18:00', avatar: '',
+            ),
+            _itemChat(
+              avatar: 'assets/image/5.jpg',
+              chat: 0,
+              message: 'Lorem Ipsum is simply dummy text',
+              time: '18:00',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
-    path.lineTo(0, size.height); // Start from bottom-left corner
-
-    // First curve (bottom-left to center)
-    var firstControlPoint = Offset(size.width / 4, size.height - 40);
-    var firstEndPoint = Offset(size.width / 2, size.height - 20);
-    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-        firstEndPoint.dx, firstEndPoint.dy);
-
-    // Second curve (center to bottom-right)
-    var secondControlPoint = Offset(size.width * 3 / 4, size.height);
-    var secondEndPoint = Offset(size.width, size.height - 20);
-    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
-        secondEndPoint.dx, secondEndPoint.dy);
-
-    // End at bottom-right corner
-    path.lineTo(size.width, 0);
-
-    path.close(); // Close the path
-
-    return path;
+  Widget _itemChat({required int chat, required String avatar, message, time}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: Row(
+        mainAxisAlignment:
+            chat == 0 ? MainAxisAlignment.end : MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          if (chat == 1) // Show avatar for received messages only
+            CircleAvatar(
+              backgroundImage: AssetImage(avatar),
+              radius: 25,
+            ),
+          Flexible(
+            child: Container(
+              margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: chat == 0 ? Colors.blue : Colors.black12,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                  bottomLeft:
+                      chat == 1 ? Radius.circular(25) : Radius.circular(0),
+                  bottomRight:
+                      chat == 0 ? Radius.circular(25) : Radius.circular(0),
+                ),
+              ),
+              child: Text(
+                '$message',
+                style: TextStyle(
+                  color: chat == 0 ? Colors.white : Colors.black,
+                ),
+              ),
+            ),
+          ),
+          if (chat == 0) // Show avatar for sent messages only
+            CircleAvatar(
+              backgroundImage: AssetImage(avatar),
+              radius: 10,
+            ),
+        ],
+      ),
+    );
   }
 
   @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return false;
+  Widget build(BuildContext context) {
+    // Replace with your actual usage of the popup card
+    return Container();
   }
 }
-
-const List<Color> orangeGradients = [
-  Color(0xFFFF9844),
-  Color(0xFFFE8853),
-  Color(0xFFFD7267),
-];
-

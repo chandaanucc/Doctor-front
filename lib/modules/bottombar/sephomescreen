@@ -1,0 +1,319 @@
+import 'package:flutter/material.dart';
+import 'package:doctor_ui_screens/theme/app_color.dart';
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    // Calculate the height for the Long Container
+    double longContainerHeight = screenHeight * 0.3; // Adjust the percentage as needed
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('Home'),
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: Image.asset(
+              'assets/images/baymax.png',
+              width: 40,
+              height: 40,
+            ),
+          ),
+        ],
+      ),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: screenHeight * 0.05, horizontal: screenWidth * 0.05),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // First Grid Container with Hamburger Menu
+                  Container(
+                    color: Colors.white,
+                    padding: EdgeInsets.all(16.0),
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10.0,
+                      mainAxisSpacing: 10.0,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      children: [
+                        // Item 1
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Risk 1',
+                                style: TextStyle(color: Colors.white, fontSize: 18.0),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 10.0),
+                              Text(
+                                '9072', // Replace with your number or dynamic value
+                                style: TextStyle(color: Colors.white, fontSize: 16.0),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                        // Item 2
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.primaryColor),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/risk2.png', // Replace with your image path
+                                width: 50,
+                                height: 50,
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Risk2',
+                                style: TextStyle(color: Colors.black, fontSize: 18.0),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                '123 km', // Replace with your number or dynamic value
+                                style: TextStyle(color: Colors.black, fontSize: 16.0),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Second Grid Container with Long Container
+                  Container(
+                    color: Colors.white,
+                    padding: EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // Long Container
+                        Container(
+                          margin: EdgeInsets.only(bottom: 16.0),
+                          padding: EdgeInsets.all(16.0),
+                          height: longContainerHeight * 0.4, // Adjusted height
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.primaryColor),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Heart Image and Text "Heart Rate"
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/heart.png', // Replace with your heart image path
+                                    width: 60,
+                                    height: 60,
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'Heart Rate',
+                                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    'Your additional text here', // Replace with your additional text
+                                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                                  ),
+                                ],
+                              ),
+                              Spacer(),
+                              // Pulse Image
+                              Image.asset(
+                                'assets/images/pulse.png', // Replace with your pulse image path
+                                width: 80,
+                                height: 50,
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        // Additional Containers in Grid Format
+                        GridView.count(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 10.0,
+                          mainAxisSpacing: 10.0,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          children: [
+                            // Container 3
+                            Container(
+                              decoration: BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              alignment: Alignment.center,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/risk2.png', // Replace with your image path
+                                    width: 50,
+                                    height: 50,
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    'Calories',
+                                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    '993 h', // Replace with your additional text
+                                    style: TextStyle(color: Colors.white, fontSize: 16.0),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // Container 4
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.blue,
+                                ),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              alignment: Alignment.center,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 30),
+                                    child: Image.asset(
+                                      'assets/images/sleep.png', // Replace with your first image path
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Image.asset(
+                                    'assets/images/lines.png', // Replace with your second image path
+                                    width: 40,
+                                    height: 40,
+                                  ),
+                                  Text("9:43"),
+                                ],
+                              ),
+                            ),
+                            // Container 5
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: AppColors.primaryColor,
+                                ),
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/yoga.png', // Replace with your image path
+                                    width: 50,
+                                    height: 50,
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    'Yoga',
+                                    style: TextStyle(color: AppColors.primaryColor, fontSize: 18.0),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    '5:30 h', // Replace with your number or dynamic value
+                                    style: TextStyle(color: AppColors.primaryColor, fontSize: 16.0),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // Container 6
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: AppColors.primaryColor,
+                                ),
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/fitness.png', // Replace with your image path
+                                    width: 50,
+                                    height: 50,
+                                  ),
+                                  SizedBox(height: 1),
+                                  Text(
+                                    'fitness',
+                                    style: TextStyle(color: Colors.grey, fontSize: 18.0),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    '9:43', // Replace with your number or dynamic value
+                                    style: TextStyle(color: Colors.black, fontSize: 16.0),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          // Positioned widget for Chatbot Image
+          Positioned(
+            
+            bottom: screenHeight * 0.10, 
+            // Adjust as needed for vertical positioning
+            left: screenWidth * 0.5 - 40, // Center horizontally
+            child: Image.asset(
+              'assets/images/chatbot.png', // Replace with your image path
+              width: 80,
+              height: 80,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
