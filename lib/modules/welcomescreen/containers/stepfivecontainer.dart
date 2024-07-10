@@ -1,6 +1,9 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:flutter/material.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
-import 'package:ai_doc_app/modules/bottombar/bottombar.dart';
+
+import '../../bottombar/bottombar.dart';
 
 class StepFiveContainer extends StatelessWidget {
   const StepFiveContainer({Key? key}) : super(key: key);

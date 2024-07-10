@@ -35,40 +35,46 @@ class Disclaimer extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Positioned(
-            left: screenWidth * 0.3,
+          Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Positioned(
             top: screenHeight * 0.05,
-            child: Image.asset(
-              'assets/images/hi.png',
-              width: screenWidth * 0.4,
-              height: screenWidth * 0.4,
+            left: screenWidth * 0.05,
+            child: Container(
+              width: screenWidth * 0.25,
+              height: screenWidth * 0.25,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/hi.png'),
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
           ),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-              child: SingleChildScrollView(
-                child: Container(
-                  constraints: BoxConstraints(maxWidth: 600), // Limit width for larger screens
-                  width: screenWidth * 0.8,
-                  decoration: BoxDecoration(
-                    color: AppColors.accentColor,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        spreadRadius: 5,
-                        blurRadius: 10,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                  const SizedBox(height: 20),
+                  Container(
+                    width: screenWidth * 0.9,
+                    padding: EdgeInsets.all(screenWidth * 0.05),
+                    decoration: BoxDecoration(
+                      color: AppColors.accentColor,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(height: 10),
+                        
+                        const SizedBox(height: 20),
                         const Text(
                           'Disclaimer',
                           style: TextStyle(
@@ -87,7 +93,7 @@ class Disclaimer extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 20),
                         Container(
                           constraints: BoxConstraints(maxHeight: screenHeight * 0.6), // Limit height
                           width: screenWidth * 0.7,
@@ -125,10 +131,11 @@ class Disclaimer extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
+          
         ],
       ),
     );
