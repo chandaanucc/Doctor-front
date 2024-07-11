@@ -1,3 +1,5 @@
+
+import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
 class healthdevices extends StatelessWidget {
@@ -8,7 +10,9 @@ class healthdevices extends StatelessWidget {
         title: Text('Team'),
       ),
       body: Center(
-        child: Text('Team Screen'),
+        child: Transform.scale(
+          scale: 1.5,
+          child: Icon(Icons.volunteer_activism, size: 70, color: AppColors.primaryColor,))
       ),
     );
   }

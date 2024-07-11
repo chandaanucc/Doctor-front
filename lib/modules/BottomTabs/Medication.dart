@@ -1,3 +1,5 @@
+
+import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
 class Medication extends StatelessWidget {
@@ -8,7 +10,9 @@ class Medication extends StatelessWidget {
         title: Text('Profile'),
       ),
       body: Center(
-        child: Text('Profile Screen'),
+        child: Transform.scale(
+          scale: 1.5,
+          child: Icon(Icons.medication, size: 70, color: AppColors.primaryColor))
       ),
     );
   }
