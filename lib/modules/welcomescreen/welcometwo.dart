@@ -1,58 +1,62 @@
-import 'package:ai_doc_app/modules/welcomescreen/welcomeone.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import '../../theme/app_color.dart';
+import '../disclaimer/disclaimer.dart';
 import 'containers/steptwocontainer.dart';
+import 'welcomeone.dart'; // Ensure this import points to the correct location of your WelcomeScreen
 
 class WelcomeScreenTwo extends StatelessWidget {
-  const WelcomeScreenTwo ({super.key});
+  const WelcomeScreenTwo({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const WelcomeScreen(),
-              ),
-            );
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.close, color: Colors.white),
-            onPressed: () async {
-              bool exit = await showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Exit App'),
-                  content: const Text('Are you sure you want to exit the app?'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(false),
-                      child: const Text('No'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(true),
-                      child: const Text('Yes'),
-                    ),
-                  ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40.0), // Reduced height for the app bar
+        child: AppBar(
+          backgroundColor: AppColors.primaryColor,
+          scrolledUnderElevation: 0,
+          iconTheme: const IconThemeData(color: Colors.white), // Set icon color to grey
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WelcomeScreen(),
                 ),
               );
-              if (exit ?? false) {
-                SystemNavigator.pop();
-              }
             },
           ),
-        ],
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () async {
+                bool exit = await showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Exit App'),
+                    content: const Text('Are you sure you want to exit the app?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(false),
+                        child: const Text('No'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(true),
+                        child: const Text('Yes'),
+                      ),
+                    ],
+                  ),
+                );
+                if (exit ?? false) {
+                  SystemNavigator.pop();
+                }
+              },
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -65,28 +69,10 @@ class WelcomeScreenTwo extends StatelessWidget {
                   color: AppColors.primaryColor,
                 ),
               ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.0,
-                right: 0,
-                child: Image.asset(
-                  'assets/images/bear.png',
-                  width: MediaQuery.of(context).size.width * 0.2,
-                  height: MediaQuery.of(context).size.height * 0.25,
-                ),
-              ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.02,
-                right: MediaQuery.of(context).size.width * 0.00,
-                child: Image.asset(
-                  'assets/images/white circles.png',
-                  width: MediaQuery.of(context).size.width * 0.35,
-                  height: MediaQuery.of(context).size.height * 0.3,
-                ),
-              ),
               Padding(
                 padding: EdgeInsets.fromLTRB(
                   MediaQuery.of(context).size.width * 0.1,
-                  MediaQuery.of(context).size.height * 0.15,
+                  MediaQuery.of(context).size.height * 0.05,
                   MediaQuery.of(context).size.width * 0.1,
                   20,
                 ),
@@ -94,24 +80,37 @@ class WelcomeScreenTwo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Welcome!',
+                      'Welcome',
                       style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.08,
+                        fontSize: MediaQuery.of(context).size.width * 0.05,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Text(
+                      'Cruzemortal',
+                      style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.09,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: Text(
-                        'Lorem Ipsum is simply dummy text of the printing\n and typesetting industry. '
-                        'Lorem Ipsum has been the industry’s standard dummy text\n ever since the 1500s, '
-                        'when an unknown printer took a galley of type and scrambled it to\n make a type specimen book.',
-                        style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.030,
-                          color: Colors.white,
-                        ),
+                    Text(
+                      'I am Baymax,\n\nYour health care companion',
+                      style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'In order for me to assist you\nplease let me your details below....',
+                      style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                     const SizedBox(height: 30),
@@ -131,6 +130,24 @@ class WelcomeScreenTwo extends StatelessWidget {
                     Center(child: StepTwoContainer()),
                     const SizedBox(height: 20),
                   ],
+                ),
+              ),
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.01,
+                right: 0,
+                child: Image.asset(
+                  'assets/images/bear.png',
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.height * 0.25,
+                ),
+              ),
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.04,
+                right: MediaQuery.of(context).size.width * 0.00,
+                child: Image.asset(
+                  'assets/images/white circles.png',
+                  width: MediaQuery.of(context).size.width * 0.35,
+                  height: MediaQuery.of(context).size.height * 0.3,
                 ),
               ),
             ],

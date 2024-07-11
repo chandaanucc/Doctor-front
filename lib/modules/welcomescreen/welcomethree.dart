@@ -1,11 +1,11 @@
-import 'package:ai_doc_app/modules/welcomescreen/welcometwo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../theme/app_color.dart';
 import 'containers/stepthreecontainer.dart';
+import 'welcometwo.dart'; // Ensure this import points to the correct location of your WelcomeScreenTwo
 
 class WelcomeScreenThree extends StatelessWidget {
-  const WelcomeScreenThree({Key? key}) : super(key: key);
+  const WelcomeScreenThree({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,48 +13,51 @@ class WelcomeScreenThree extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const WelcomeScreenTwo(),
-              ),
-            );
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.close, color: Colors.white),
-            onPressed: () async {
-              bool exit = await showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Exit App'),
-                  content: const Text('Are you sure you want to exit the app?'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(false),
-                      child: const Text('No'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(true),
-                      child: const Text('Yes'),
-                    ),
-                  ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40.0), // Reduced height for the app bar
+        child: AppBar(
+          backgroundColor: AppColors.primaryColor,
+          scrolledUnderElevation: 0,
+          iconTheme: const IconThemeData(color: Colors.white), // Set icon color to grey
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WelcomeScreenTwo(),
                 ),
               );
-              if (exit ?? false) {
-                SystemNavigator.pop();
-              }
             },
           ),
-        ],
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () async {
+                bool exit = await showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Exit App'),
+                    content: const Text('Are you sure you want to exit the app?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(false),
+                        child: const Text('No'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(true),
+                        child: const Text('Yes'),
+                      ),
+                    ],
+                  ),
+                );
+                if (exit ?? false) {
+                  SystemNavigator.pop();
+                }
+              },
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -67,28 +70,10 @@ class WelcomeScreenThree extends StatelessWidget {
                   color: AppColors.primaryColor,
                 ),
               ),
-              Positioned(
-                top: screenHeight * 0.02,
-                right: 0,
-                child: Image.asset(
-                  'assets/images/bear.png',
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.25,
-                ),
-              ),
-              Positioned(
-                top: screenHeight * 0.04,
-                right: 0,
-                child: Image.asset(
-                  'assets/images/white circles.png',
-                  width: screenWidth * 0.35,
-                  height: screenHeight * 0.3,
-                ),
-              ),
               Padding(
                 padding: EdgeInsets.fromLTRB(
                   screenWidth * 0.1,
-                  screenHeight * 0.1, // Reduced vertical padding
+                  screenHeight * 0.05,
                   screenWidth * 0.1,
                   20,
                 ),
@@ -96,24 +81,37 @@ class WelcomeScreenThree extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Welcome!',
+                      'Welcome',
                       style: TextStyle(
-                        fontSize: screenWidth * 0.08,
+                        fontSize: screenWidth * 0.05,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Text(
+                      'Cruzemortal',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.09,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                     const SizedBox(height: 20),
-                    SizedBox(
-                      width: screenWidth * 0.8,
-                      child: Text(
-                        'Lorem Ipsum is simply dummy text of the printing\n and typesetting industry. '
-                        'Lorem Ipsum has been the industry’s standard dummy text\n ever since the 1500s, '
-                        'when an unknown printer took a galley of type and scrambled it to\n make a type specimen book.',
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.030,
-                          color: Colors.white,
-                        ),
+                    Text(
+                      'I am Baymax,\n\nYour health care companion',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.04,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'In order for me to assist you\nplease let me your details below....',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.04,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                     const SizedBox(height: 30),
@@ -133,6 +131,24 @@ class WelcomeScreenThree extends StatelessWidget {
                     Center(child: StepThreeContainer()),
                     const SizedBox(height: 20),
                   ],
+                ),
+              ),
+              Positioned(
+                top: screenHeight * 0.01,
+                right: 0,
+                child: Image.asset(
+                  'assets/images/bear.png',
+                  width: screenWidth * 0.2,
+                  height: screenHeight * 0.25,
+                ),
+              ),
+              Positioned(
+                top: screenHeight * 0.04,
+                right: 0,
+                child: Image.asset(
+                  'assets/images/white circles.png',
+                  width: screenWidth * 0.35,
+                  height: screenHeight * 0.3,
                 ),
               ),
             ],

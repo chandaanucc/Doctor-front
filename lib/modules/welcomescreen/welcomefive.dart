@@ -1,11 +1,11 @@
-import 'package:ai_doc_app/modules/welcomescreen/welcomefourth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'containers/stepfivecontainer.dart';
+import 'welcomefourth.dart'; // Ensure this import points to the correct location of your WelcomeScreenFour
 
 class WelcomeScreenFive extends StatelessWidget {
-  const WelcomeScreenFive({Key? key});
+  const WelcomeScreenFive({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,47 +14,51 @@ class WelcomeScreenFive extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const WelcomeScreenFour(),
-              ),
-            );
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.close, color: Colors.white),
-            onPressed: () async {
-              bool exit = await showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Exit App'),
-                  content: const Text('Are you sure you want to exit the app?'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(false),
-                      child: const Text('No'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(true),
-                      child: const Text('Yes'),
-                    ),
-                  ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40.0), // Reduced height for the app bar
+        child: AppBar(
+          backgroundColor: AppColors.primaryColor,
+          scrolledUnderElevation: 0,
+          iconTheme: const IconThemeData(color: Colors.white), // Set icon color to white
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WelcomeScreenFour(),
                 ),
               );
-              if (exit ?? false) {
-                SystemNavigator.pop();
-              }
             },
           ),
-        ],
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () async {
+                bool exit = await showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Exit App'),
+                    content: const Text('Are you sure you want to exit the app?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(false),
+                        child: const Text('No'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.of(context).pop(true),
+                        child: const Text('Yes'),
+                      ),
+                    ],
+                  ),
+                );
+                if (exit ?? false) {
+                  SystemNavigator.pop();
+                }
+              },
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -68,7 +72,7 @@ class WelcomeScreenFive extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: screenHeight * 0.0,
+                top: screenHeight * 0.04,
                 right: 0,
                 child: Image.asset(
                   'assets/images/bear.png',
@@ -77,7 +81,7 @@ class WelcomeScreenFive extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: screenHeight * 0.02,
+                top: screenHeight * 0.07,
                 right: screenWidth * 0.00,
                 child: Image.asset(
                   'assets/images/white circles.png',
@@ -98,40 +102,54 @@ class WelcomeScreenFive extends StatelessWidget {
                     Text(
                       'Welcome!',
                       style: TextStyle(
-                        fontSize: screenWidth * 0.08,
+                        fontSize: screenWidth * 0.05,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                     SizedBox(height: screenHeight * 0.02),
-                    SizedBox(
-                      width: screenWidth * 0.8,
-                      child: Text(
-                        'Lorem Ipsum is simply dummy text of the printing\n and typesetting industry. '
-                        'Lorem Ipsum has been the industry’s standard dummy text\n ever since the 1500s, '
-                        'when an unknown printer took a galley of type and scrambled it to\n make a type specimen book.',
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.030,
-                          color: Colors.white,
-                        ),
+                    Text(
+                      'Cruzemortal',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.09,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
-                    SizedBox(height: screenHeight * 0.03),
+                    SizedBox(height: 20),
+                    Text(
+                      'I am Baymax,\n\nYour health care companion',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.04,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'In order for me to assist you\nplease let me your details below....',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.04,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    SizedBox(height: 30),
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: screenWidth * 0.2,
                       ),
                       child: LinearProgressIndicator(
-                        minHeight: screenHeight * 0.01,
+                        minHeight: 10,
                         value: 5 / 5,
                         backgroundColor: Colors.white,
                         color: AppColors.accentColor,
-                        borderRadius: BorderRadius.circular(screenWidth * 0.02),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
                     ),
-                    SizedBox(height: screenHeight * 0.03),
+                    SizedBox(height: 30),
                     Center(child: StepFiveContainer()),
-                    SizedBox(height: screenHeight * 0.02),
+                    SizedBox(height: 20),
                     Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

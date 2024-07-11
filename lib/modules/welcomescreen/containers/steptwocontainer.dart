@@ -136,12 +136,12 @@ class _StepTwoContainerState extends State<StepTwoContainer> {
                     height: screenHeight * 0.06,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(screenHeight * 0.05),
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [
                           AppColors.primaryColor,
                           Colors.white,
                         ],
-                        stops: [0.63, 0.5],
+                        stops: [0.615, 0.5],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),
@@ -191,11 +191,11 @@ class _StepTwoContainerState extends State<StepTwoContainer> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.accentColor,
-                      side: BorderSide(color: Colors.white),
+                      side: const BorderSide(color: Colors.white),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text('Continue', style: TextStyle(color: Colors.white)),
                         Icon(Icons.arrow_right, color: Colors.white),
                       ],

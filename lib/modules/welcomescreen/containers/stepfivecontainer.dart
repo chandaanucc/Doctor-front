@@ -1,12 +1,9 @@
-// ignore_for_file: use_super_parameters
-
 import 'package:flutter/material.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
-
 import '../../bottombar/bottombar.dart';
 
 class StepFiveContainer extends StatelessWidget {
-  const StepFiveContainer({Key? key}) : super(key: key);
+  const StepFiveContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,24 +41,23 @@ class StepFiveContainer extends StatelessWidget {
               style: TextStyle(fontSize: screenWidth * 0.035, color: Colors.white),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: screenHeight * 0.15), // Adjusted height for spacing
+            SizedBox(height: screenHeight * 0.25), // Adjusted height for spacing
             ElevatedButton(
               onPressed: () {
-
                 Navigator.push(
-          context, MaterialPageRoute(builder: (context) => BottomBar()
-         )
-         );
+                  context, 
+                  MaterialPageRoute(builder: (context) => BottomBar())
+                );
                 // Handle Calculate Risk action
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primaryColor,
-                padding: EdgeInsets.symmetric(vertical: screenHeight * 0.03, horizontal: screenWidth * 0.05),
-                minimumSize: Size(screenWidth * 0.7, screenHeight * 0.07), // Adjusted size for responsiveness
+                padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02, horizontal: screenWidth * 0.04), // Reduced padding
+                minimumSize: Size(screenWidth * 0.6, screenHeight * 0.05), // Reduced size for responsiveness
               ),
               child: Text(
                 'Calculating Risk based on your inputs',
-                style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04),
+                style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.035), // Reduced font size
                 textAlign: TextAlign.center,
               ),
             ),

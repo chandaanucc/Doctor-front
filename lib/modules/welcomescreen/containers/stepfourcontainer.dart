@@ -3,7 +3,7 @@ import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:ai_doc_app/modules/welcomescreen/welcomefive.dart';
 
 class StepFourContainer extends StatefulWidget {
-  const StepFourContainer({Key? key}) : super(key: key);
+  const StepFourContainer({super.key});
 
   @override
   _StepFourContainerState createState() => _StepFourContainerState();
@@ -69,45 +69,48 @@ class _StepFourContainerState extends State<StepFourContainer> {
             ),
             SizedBox(height: screenHeight * 0.04),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle Examine Later action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor,
-                    padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02, horizontal: screenWidth * 0.04),
-                    minimumSize: Size(screenWidth * 0.35, screenHeight * 0.07), // Adjusted size for responsiveness
-                  ),
-                  child: Text(
-                    'Examine Later',
-                    style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Handle Examine Later action
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryColor,
+                      padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02, horizontal: screenWidth * 0.04),
+                      minimumSize: Size(screenWidth * 0.35, screenHeight * 0.07), // Adjusted size for responsiveness
+                    ),
+                    child: Text(
+                      'Examine Later',
+                      style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04),
+                    ),
                   ),
                 ),
                 SizedBox(width: screenWidth * 0.02), // Added space between buttons
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const WelcomeScreenFive(),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.accentColor,
-                    padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02, horizontal: screenWidth * 0.04),
-                    side: BorderSide(color: Colors.white, width: 2.0),
-                    minimumSize: Size(screenWidth * 0.35, screenHeight * 0.07), // Adjusted size for responsiveness
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Continue', style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04)),
-                      SizedBox(width: screenWidth * 0.02),
-                      Icon(Icons.arrow_right, color: Colors.white, size: screenWidth * 0.05),
-                    ],
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const WelcomeScreenFive(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.accentColor,
+                      padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02, horizontal: screenWidth * 0.04),
+                      side: BorderSide(color: Colors.white, width: 2.0),
+                      minimumSize: Size(screenWidth * 0.35, screenHeight * 0.07), // Adjusted size for responsiveness
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('Continue', style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04)),
+                        SizedBox(width: screenWidth * 0.02),
+                        Icon(Icons.arrow_right, color: Colors.white, size: screenWidth * 0.05),
+                      ],
+                    ),
                   ),
                 ),
               ],

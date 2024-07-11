@@ -38,7 +38,7 @@ class Disclaimer extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: screenHeight * 0.05),
+                
                 Image.asset(
                   'assets/images/hi.png',
                   width: screenWidth * 0.25,
@@ -84,7 +84,7 @@ class Disclaimer extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        constraints: BoxConstraints(maxHeight: screenHeight * 0.6), // Limit height
+                        constraints: BoxConstraints(maxHeight: screenHeight * 0.7), // Limit height
                         width: screenWidth * 0.7,
                         decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
