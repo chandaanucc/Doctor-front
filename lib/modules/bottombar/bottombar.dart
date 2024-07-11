@@ -1,5 +1,416 @@
+// import 'package:doctor_ui_screens/modules/BottomTabs/Home.dart';
+// import 'package:doctor_ui_screens/modules/BottomTabs/Medication.dart';
+// import 'package:doctor_ui_screens/modules/BottomTabs/appointment.dart';
+
+// import 'package:doctor_ui_screens/modules/BottomTabs/healthdevices.dart';
+// import 'package:doctor_ui_screens/theme/app_color.dart';
+// import 'package:flutter/material.dart';
+
+// class HomeScreen extends StatefulWidget {
+//   const HomeScreen({super.key});
+
+//   @override
+//   State<HomeScreen> createState() => _HomeScreenState();
+// }
+
+// class _HomeScreenState extends State<HomeScreen> {
+//   int currentIndex = 0;
+
+//   final List<Widget> pages = [
+//     Home(),
+//     Medication(),
+//     healthdevices(),
+//     appointment(),
+//   ];
+
+//   final PageStorageBucket bucket = PageStorageBucket();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     Widget currentScreen = pages[currentIndex];
+
+//     return Scaffold(
+//       body: PageStorage(
+//         child: currentScreen,
+//         bucket: bucket,
+//       ),
+//       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+//       floatingActionButton: SizedBox(
+//         height: 70.0,
+//         width: 70.0,
+//         child: GestureDetector(
+//           onTap: () {
+//             print("Image button");
+//           },
+//           child: Image.asset(
+//             'assets/images/hi.png', // Replace with your image path
+//             fit: BoxFit.cover,
+//           ),
+//         ),
+//       ),
+//       bottomNavigationBar: BottomAppBar(
+//         clipBehavior: Clip.antiAlias,
+//         shape: CircularNotchedRectangle(), 
+//         notchMargin: 2,
+
+//         color: AppColors.primaryColor,
+//         // elevation: 0,
+//         // child: Container(
+//         //   height: 60,
+//           child: new Row(
+//             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             mainAxisSize: MainAxisSize.max,
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Row(
+//                 children: [
+//                   MaterialButton(
+//                     minWidth: 20,
+//                     onPressed: () {
+//                       setState(() {
+//                         currentScreen = Home();
+//                         currentIndex = 0;
+//                       });
+//                     },
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Image.asset('assets/images/home.png',
+//                         width: 30,
+                      
+                          
+//                           color: currentIndex == 0
+//                               ? Colors.pinkAccent
+//                               : Colors.white,
+//                         ),
+//                         Text(
+//                           "Home",
+//                           style: TextStyle(
+//                             color: currentIndex == 0
+//                                 ? Colors.pinkAccent
+//                                 : Colors.grey,
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                   MaterialButton(
+//                     minWidth: 40,
+//                     onPressed: () {
+//                       setState(() {
+//                         currentScreen = Medication();
+//                         currentIndex = 1;
+//                       });
+//                     },
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Image.asset(
+//                           'assets/images/medications.png',
+//                           width: 30,
+//                           color: currentIndex == 1
+//                               ? Colors.pinkAccent
+//                               : Colors.white,
+//                         ),
+//                         Text(
+//                           "Medications",
+//                           style: TextStyle(
+//                             color: currentIndex == 1
+//                                 ? Colors.pinkAccent
+//                                 : Colors.white,
+//                           ),
+                        
+//                         )
+//                         // Text("reminders/history")
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//               Row(
+//                 children: [
+//                   MaterialButton(
+//                     minWidth: 40,
+//                     onPressed: () {
+//                       setState(() {
+//                         currentScreen = healthdevices();
+//                         currentIndex = 2;
+//                       });
+//                     },
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Image.asset(
+//                           'assets/images/healthdevices.png',
+//                           color: currentIndex == 2
+//                               ? Colors.pinkAccent
+//                               : Colors.white,
+//                         ),
+//                         Text(
+//                           "Healthdevices",
+//                           style: TextStyle(
+//                             color: currentIndex == 2
+//                                 ? Colors.pinkAccent
+//                                 : Colors.white,
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                   MaterialButton(
+//                     minWidth: 40,
+//                     onPressed: () {
+//                       setState(() {
+//                         currentScreen = appointment();
+//                         currentIndex = 3;
+//                       });
+//                     },
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Image.asset(
+//                           'assets/images/appointment.png',
+//                           color: currentIndex == 3
+//                               ? Colors.pinkAccent
+//                               : Colors.white,
+//                         ),
+//                         Text(
+//                           "book",
+//                           style: TextStyle(
+//                             color: currentIndex == 3
+//                                 ? Colors.pinkAccent
+//                                 : Colors.white,
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+        
+//       ),
+//       backgroundColor: AppColors.textColor,
+//     );
+//   }
+// }
 
 
+
+// import 'package:doctor_ui_screens/modules/BottomTabs/Home.dart';
+// import 'package:doctor_ui_screens/modules/BottomTabs/Medication.dart';
+// import 'package:doctor_ui_screens/modules/BottomTabs/appointment.dart';
+// import 'package:doctor_ui_screens/modules/BottomTabs/healthdevices.dart';
+// import 'package:doctor_ui_screens/theme/app_color.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+
+// class BottomBar extends StatefulWidget {
+//   const BottomBar({super.key});
+
+//   @override
+//   State<BottomBar> createState() => _BottomBarState();
+// }
+
+// class _BottomBarState extends State<BottomBar> {
+//   int currentIndex = 0;
+
+//   final List<Widget> pages = [
+//     Home(),
+//     Medication(),
+//     healthdevices(),
+//     appointment(),
+//   ];
+
+//   final PageStorageBucket bucket = PageStorageBucket();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     Widget currentScreen = pages[currentIndex];
+
+//     return Scaffold(
+//       body: PageStorage(
+//         child: currentScreen,
+//         bucket: bucket,
+//       ),
+//       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+//       floatingActionButton: Padding(
+//         padding: const EdgeInsets.only(top: 20),
+//         child: SizedBox(
+//           height: 40.0,
+//           width: 40.0,
+//           child: GestureDetector(
+//             onTap: () {
+//               print("Image button");
+//             },
+//             child: GestureDetector(
+//   onTap: () {
+
+//     print("Image button");
+//     _showPopupCard(context);
+    
+    
+//   },
+  
+   
+//   child: Padding(
+//      padding: const EdgeInsets.only(bottom: 10),
+//     child: Transform.scale(
+//       scale: 1.8,
+//       child: Image.asset(
+//         'assets/images/baymax2.png', // Replace with your image path
+//         width: MediaQuery.of(context).size.width * 2.9, // 10% of screen width
+//         height: MediaQuery.of(context).size.width * 2.9, // 5% of screen width
+//       ),
+//     ),
+//   ),
+// ),
+
+//           ),
+//         ),
+//       ),
+//       bottomNavigationBar: BottomAppBar(
+//         clipBehavior: Clip.antiAlias,
+//         shape: CircularNotchedRectangle(),
+//         notchMargin: 20,
+//         color: AppColors.primaryColor,
+//         child: SizedBox(
+//           height: kBottomNavigationBarHeight,
+//           child: Row(
+//             mainAxisSize: MainAxisSize.max,
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Row(
+//                 children: [
+//                   MaterialButton(
+//                     minWidth: 20,
+//                     onPressed: () {
+//                       setState(() {
+//                         currentScreen = Home();
+//                         currentIndex = 0;
+//                       });
+//                     },
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Image.asset(
+//                           'assets/images/home.png',
+//                           width: 30,
+//                           color: currentIndex == 0
+//                               ? Colors.pinkAccent
+//                               : Colors.white,
+//                         ),
+//                         Text(
+//                           "Home",
+//                           style: TextStyle(
+//                             color: currentIndex == 0
+//                                 ? Colors.pinkAccent
+//                                 : Colors.grey,
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                   MaterialButton(
+//                     minWidth: 40,
+//                     onPressed: () {
+//                       setState(() {
+//                         currentScreen = Medication();
+//                         currentIndex = 1;
+//                       });
+//                     },
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Image.asset(
+//                           'assets/images/medications.png',
+//                           width: 30,
+//                           color: currentIndex == 1
+//                               ? Colors.pinkAccent
+//                               : Colors.white,
+//                         ),
+//                         Text(
+//                           "Medications",
+//                           style: TextStyle(
+//                             color: currentIndex == 1
+//                                 ? Colors.pinkAccent
+//                                 : Colors.white,
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//               Row(
+//                 children: [
+//                   MaterialButton(
+//                     minWidth: 40,
+//                     onPressed: () {
+//                       setState(() {
+//                         currentScreen = healthdevices();
+//                         currentIndex = 2;
+//                       });
+//                     },
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Image.asset(
+//                           'assets/images/healthdevices.png',
+//                           color: currentIndex == 2
+//                               ? Colors.pinkAccent
+//                               : Colors.white,
+//                         ),
+//                         Text(
+//                           "Healthdevices",
+//                           style: TextStyle(
+//                             color: currentIndex == 2
+//                                 ? Colors.pinkAccent
+//                                 : Colors.white,
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                   MaterialButton(
+//                     minWidth: 70,
+//                     onPressed: () {
+//                       setState(() {
+//                         currentScreen = appointment();
+//                         currentIndex = 3;
+//                       });
+//                     },
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         Image.asset(
+//                           'assets/images/appointment.png',
+//                           color: currentIndex == 3
+//                               ? Colors.pinkAccent
+//                               : Colors.white,
+//                         ),
+//                         Text(
+//                           "Booking",
+//                           style: TextStyle(
+//                             color: currentIndex == 3
+//                                 ? Colors.pinkAccent
+//                                 : Colors.white,
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//       backgroundColor: AppColors.textColor,
+//     );
+//   }
+// }
 
 import 'package:ai_doc_app/modules/BottomTabs/Home.dart';
 import 'package:ai_doc_app/modules/BottomTabs/Medication.dart';
@@ -288,6 +699,7 @@ void _showPopupCard(BuildContext context) {
                    padding: EdgeInsets.only(left: screenWidth * 0.05, right: screenHeight * 0.05),
                   child: Container(
                     height: screenHeight * 0.06,
+                    
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white,
@@ -297,7 +709,7 @@ void _showPopupCard(BuildContext context) {
                         'Lorem ipsum dolor sit amet consect?',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 16,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -320,7 +732,7 @@ void _showPopupCard(BuildContext context) {
                         'Lorem ipsum dolor sit amet consect?',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 16,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -342,7 +754,7 @@ void _showPopupCard(BuildContext context) {
                         'Lorem ipsum dolor sit amet consect?',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 16,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -364,7 +776,7 @@ void _showPopupCard(BuildContext context) {
                         'Lorem ipsum dolor sit amet consect?',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 16,
+                          fontSize: 13,
                         ),
                       ),
                     ),
@@ -383,23 +795,31 @@ void _showPopupCard(BuildContext context) {
                    endIndent: 25.0,
                 ),
 
+                Text(
+                  '    Type message',
+                  style: TextStyle(color: Colors.grey),
+                ),
+
+         
+
+
+                
+
                 // Message input section
-                SizedBox(height: screenHeight * 0.01),
+               
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Enter your message",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(width: 20,),
+
+
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
+                            padding: const EdgeInsets.only(bottom: 15),
                             child: Transform.scale(
                               scale: 1.8,
                               child: Container(
@@ -409,13 +829,35 @@ void _showPopupCard(BuildContext context) {
                                   shape: BoxShape.circle,
                                   color: AppColors.primaryColor,
                                 ),
-                                child: Align(
-                                  child: Icon(Icons.send, size: 10, color: Colors.white)),
+                                child: Icon(Icons.send, size: 10, color: Colors.white),
                               ),
                             ),
                           ),
                         ],
                       ),
+                      
+                      
+                      // SizedBox(width: 20,),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.end,
+                      //   children: [
+                      //     Padding(
+                      //       padding: const EdgeInsets.only(bottom: 10),
+                      //       child: Transform.scale(
+                      //         scale: 1.8,
+                      //         child: Container(
+                      //          height: screenHeight * 0.02,
+                      //          width: screenHeight * 0.03,
+                      //           decoration: BoxDecoration(
+                      //             shape: BoxShape.circle,
+                      //             color: AppColors.primaryColor,
+                      //           ),
+                      //           child: Icon(Icons.send, size: 10, color: Colors.white),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
                 ),
