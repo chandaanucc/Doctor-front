@@ -21,14 +21,17 @@ class Home extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Home', style: TextStyle(color: Colors.black),),
+        title: Text('          Home', style: TextStyle(color: Colors.black),),
         
         backgroundColor: Colors.white,
       
         leading: IconButton(
-          icon: Icon(Icons.menu),
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Scaffold.of(context).openDrawer();
+
+         Navigator.of(context).pop(context);
+            
+            
           },
 
           
@@ -43,19 +46,9 @@ class Home extends StatelessWidget {
         
 
         actions: [
+         
           Padding(
-            padding: const EdgeInsets.only(left: 20, right: 220),
-            child: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context).pop(); // Handle back button press
-            },
-
-            
-                    ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 40.0),
+            padding: const EdgeInsets.only(left: 20.0),
             child: Transform.scale(
               scale: 3.7,
               child: Image.asset(
@@ -65,6 +58,21 @@ class Home extends StatelessWidget {
               ),
             ),
             
+          ),
+
+
+           Padding(
+            padding: const EdgeInsets.only(left: 30),
+            child: IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+
+              
+              // Handle back button press
+            },
+
+            
+                    ),
           ),
 
          
@@ -205,7 +213,9 @@ class Home extends StatelessWidget {
                                     height: 40,
                                   ),
 
-                                  SizedBox(width: 8), // Add some spacing between the image and text
+                                  SizedBox(width: 8),
+                                  
+                                   // Add some spacing between the image and text
         Text(
           'ℍ𝕖𝕒𝕣𝕥 ℝ𝕒𝕥𝕖', // Replace with your desired text
           style: TextStyle(
@@ -243,8 +253,8 @@ class Home extends StatelessWidget {
                         // Additional Containers in Grid Format
                         GridView.count(
                           crossAxisCount: 2,
-                          crossAxisSpacing: 10.0,
-                          mainAxisSpacing: 10.0,
+                          crossAxisSpacing: 20.0,
+                          mainAxisSpacing: 15.0,
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           children: [
@@ -668,6 +678,12 @@ class Home extends StatelessWidget {
 //     },
 //   );
 // }
+
+
+
+
+
+
 
 
 

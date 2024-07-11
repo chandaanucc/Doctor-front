@@ -412,6 +412,8 @@
 //   }
 // }
 
+
+
 import 'package:ai_doc_app/modules/BottomTabs/Home.dart';
 import 'package:ai_doc_app/modules/BottomTabs/Medication.dart';
 import 'package:ai_doc_app/modules/BottomTabs/appointment.dart';
@@ -461,7 +463,10 @@ class _BottomBarState extends State<BottomBar> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+
+        
         shape: CircularNotchedRectangle(),
+        
         notchMargin: 10,
         color: AppColors.primaryColor,
         child: Row(
@@ -473,15 +478,17 @@ class _BottomBarState extends State<BottomBar> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset(
-                    'assets/images/home.png',
-                    width: 24,
-                    color: currentIndex == 0 ? Colors.pinkAccent : Colors.white,
-                  ),
+                  // Image.asset(
+                  //   'assets/images/home.png',
+                  //   width: 24,
+                  //   color: currentIndex == 0 ? Colors.white : Colors.white,
+                  // ),
+
+                  Icon(Icons.home_filled, size: 20, color: currentIndex == 0 ? Colors.grey : Colors.white,),
                   Text(
                     "Home",
                     style: TextStyle(
-                      color: currentIndex == 0 ? Colors.pinkAccent : Colors.white,
+                      color: currentIndex == 0 ? Colors.grey : Colors.white,
                     ),
                   ),
                 ],
@@ -493,15 +500,18 @@ class _BottomBarState extends State<BottomBar> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset(
-                    'assets/images/medications.png',
-                    width: 24,
-                    color: currentIndex == 1 ? Colors.pinkAccent : Colors.white,
-                  ),
+                  // Image.asset(
+                  //   'assets/images/medications.png',
+                  //   width: 24,
+                  //   color: currentIndex == 1 ? Colors.white : Colors.white,
+                  // ),
+
+
+                  Icon(Icons.medication, size: 20 , color: currentIndex == 1 ? Colors.grey : Colors.white),
                   Text(
                     "Medications",
                     style: TextStyle(
-                      color: currentIndex == 1 ? Colors.pinkAccent : Colors.white,
+                      color: currentIndex == 1 ? Colors.grey : Colors.white,
                     ),
                   ),
                 ],
@@ -513,15 +523,16 @@ class _BottomBarState extends State<BottomBar> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset(
-                    'assets/images/healthdevices.png',
-                    width: 24,
-                    color: currentIndex == 2 ? Colors.pinkAccent : Colors.white,
-                  ),
+                  // Image.asset(
+                  //   'assets/images/healthdevices.png',
+                  //   width: 24,
+                  //   color: currentIndex == 2 ? Colors.white : Colors.white,
+                  // ),
+                  Icon(Icons.volunteer_activism, size: 20, color: currentIndex == 2 ? Colors.grey : Colors.white),
                   Text(
-                    "Health Devices",
+                    "Equipments",
                     style: TextStyle(
-                      color: currentIndex == 2 ? Colors.pinkAccent : Colors.white,
+                      color: currentIndex == 2 ? Colors.grey : Colors.white,
                     ),
                   ),
                 ],
@@ -533,15 +544,18 @@ class _BottomBarState extends State<BottomBar> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Image.asset(
-                    'assets/images/appointment.png',
-                    width: 24,
-                    color: currentIndex == 3 ? Colors.pinkAccent : Colors.white,
-                  ),
+                  // Image.asset(
+                  //   'assets/images/appointment.png',
+                  //   width: 24,
+                  //   color: currentIndex == 3 ? Colors.white : Colors.white,
+                  // ),
+                  Icon(Icons.calendar_month, color: currentIndex == 3 ? Colors.grey : Colors.white,),
+                  SizedBox(height: 4,),
+                 
                   Text(
                     "Bookings",
                     style: TextStyle(
-                      color: currentIndex == 3 ? Colors.pinkAccent : Colors.white,
+                      color: currentIndex == 3 ? Colors.grey : Colors.white,
                     ),
                   ),
                 ],
