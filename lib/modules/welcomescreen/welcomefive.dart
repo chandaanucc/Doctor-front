@@ -72,7 +72,7 @@ class WelcomeScreenFive extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: screenHeight * 0.04,
+                top: screenHeight * 0.059,
                 right: 0,
                 child: Image.asset(
                   'assets/images/bear.png',
@@ -81,7 +81,7 @@ class WelcomeScreenFive extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: screenHeight * 0.07,
+                top: screenHeight * 0.08,
                 right: screenWidth * 0.00,
                 child: Image.asset(
                   'assets/images/white circles.png',

@@ -1,8 +1,6 @@
-
 import 'package:ai_doc_app/modules/loginscreen/login.dart';
 import 'package:ai_doc_app/theme/app_color.dart';
 import 'package:flutter/material.dart';
- // Import your custom colors
 
 class SignUpScreen extends StatelessWidget {
   @override
@@ -11,17 +9,17 @@ class SignUpScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              'assets/images/background.png',
-              fit: BoxFit.cover,
+      resizeToAvoidBottomInset: true, // Set to true
+      body: SingleChildScrollView( // Wrap with SingleChildScrollView
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Image.asset(
+                'assets/images/background.png',
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          SingleChildScrollView(
-            child: Padding(
+            Padding(
               padding: EdgeInsets.symmetric(vertical: screenHeight * 0.05, horizontal: screenWidth * 0.05),
               child: Column(
                 children: [
@@ -241,8 +239,8 @@ class SignUpScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
